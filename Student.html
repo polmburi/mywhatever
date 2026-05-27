@@ -550,6 +550,80 @@
             display: inline-block;
             flex-shrink: 0;
         }
+
+        /* Custom Alert/Confirm Modal */
+        .msg-modal-box {
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-top: 2px solid #00E5FF;
+            padding: 30px;
+            max-width: 380px;
+            width: 90%;
+            text-align: center;
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        .msg-modal-box h3 {
+            margin-bottom: 10px;
+        }
+
+        .msg-modal-box p {
+            color: #ccc;
+            font-size: 14px;
+            margin: 0 0 20px;
+            line-height: 1.5;
+        }
+
+        .msg-modal-box .modal-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .msg-modal-box .modal-btns button {
+            flex: 1;
+        }
+
+        /* Duplicate refund text */
+        .refund-text {
+            color: #FFD700;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        /* Banner Details Modal */
+        .banner-detail-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .banner-detail-table th {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 8px;
+            font-size: 12px;
+            text-align: left;
+        }
+
+        .banner-detail-table td {
+            padding: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 13px;
+        }
+
+        .banner-detail-table .rate-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 3px;
+        }
+
+        .banner-detail-table .rate-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00E5FF, #00FF87);
+            border-radius: 3px;
+        }
     </style>
 </head>
 
@@ -799,8 +873,9 @@
             <div class="avatar-container" style="width: 140px; height: 140px; border-color: #00FF87;">
                 <img id="reveal-item-img" src="" alt="Dropped Item">
             </div>
-            <h3 id="reveal-item-name" style="color: #fff; margin-bottom: 20px;">ITEM NAME</h3>
-            <button onclick="closeGachaReveal()" class="primary-btn">AWESOME!</button>
+            <h3 id="reveal-item-name" style="color: #fff; margin-bottom: 5px;">ITEM NAME</h3>
+            <p id="reveal-duplicate-text" class="refund-text hidden"></p>
+            <button onclick="closeGachaReveal()" class="primary-btn" style="margin-top: 15px;">AWESOME!</button>
         </div>
     </div>
 
@@ -812,6 +887,36 @@
                 </svg> CHOOSE YOUR AVATAR</h3>
             <div id="avatar-picker-grid" class="avatar-picker-grid"></div>
             <button onclick="closeAvatarPicker()" style="width: 100%; margin-top: 15px;">CLOSE</button>
+        </div>
+    </div>
+
+    <!-- GENERIC ALERT MODAL -->
+    <div id="alert-modal" class="modal-overlay hidden" style="z-index: 10000;">
+        <div class="msg-modal-box">
+            <h3 id="alert-modal-title" style="color: #00E5FF;">NOTICE</h3>
+            <p id="alert-modal-msg"></p>
+            <button id="alert-modal-btn" class="primary-btn" style="width: 100%;">OK</button>
+        </div>
+    </div>
+
+    <!-- GENERIC CONFIRM MODAL -->
+    <div id="confirm-modal" class="modal-overlay hidden" style="z-index: 10000;">
+        <div class="msg-modal-box">
+            <h3 id="confirm-modal-title" style="color: #00E5FF;">CONFIRM</h3>
+            <p id="confirm-modal-msg"></p>
+            <div class="modal-btns">
+                <button id="confirm-modal-no">CANCEL</button>
+                <button id="confirm-modal-yes" class="primary-btn">YES</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BANNER DETAILS MODAL -->
+    <div id="banner-detail-modal" class="modal-overlay hidden" onclick="closeBannerDetail(event)">
+        <div class="modal-box" style="max-width: 500px;" onclick="event.stopPropagation()">
+            <h3 id="banner-detail-title" style="color: #00E5FF; margin-bottom: 15px;">BANNER ITEMS</h3>
+            <div id="banner-detail-content"></div>
+            <button onclick="closeBannerDetail()" style="width: 100%; margin-top: 15px;">CLOSE</button>
         </div>
     </div>
 
@@ -834,6 +939,36 @@
         let cachedAvatars = [];
         let cachedCurrentAvatarId = "";
         let cachedPortalData = null; // For optimistic rendering
+        let cachedBannerItems = {}; // For banner details modal
+
+        // Modal helpers
+        function showModal(msg, title) {
+            document.getElementById('alert-modal-title').innerText = title || 'NOTICE';
+            document.getElementById('alert-modal-msg').innerText = msg;
+            document.getElementById('alert-modal').classList.remove('hidden');
+            return new Promise(resolve => {
+                document.getElementById('alert-modal-btn').onclick = () => {
+                    document.getElementById('alert-modal').classList.add('hidden');
+                    resolve();
+                };
+            });
+        }
+
+        function showConfirm(msg, title) {
+            document.getElementById('confirm-modal-title').innerText = title || 'CONFIRM';
+            document.getElementById('confirm-modal-msg').innerText = msg;
+            document.getElementById('confirm-modal').classList.remove('hidden');
+            return new Promise(resolve => {
+                document.getElementById('confirm-modal-yes').onclick = () => {
+                    document.getElementById('confirm-modal').classList.add('hidden');
+                    resolve(true);
+                };
+                document.getElementById('confirm-modal-no').onclick = () => {
+                    document.getElementById('confirm-modal').classList.add('hidden');
+                    resolve(false);
+                };
+            });
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             if (currentStudentId && currentPasswordHash) {
@@ -921,7 +1056,7 @@
                     toggleLoading(false);
 
                     if (result.success) {
-                        alert('PASSWORD CREATED SUCCESSFULLY! PLEASE LOGIN.');
+                        await showModal('PASSWORD CREATED SUCCESSFULLY! PLEASE LOGIN.', 'SUCCESS');
                         isFirstTimeState = false;
                         document.getElementById('create-pass').value = "";
                         document.getElementById('confirm-pass').value = "";
@@ -1032,6 +1167,9 @@
                 });
             }
 
+            // Cache banner items
+            cachedBannerItems = result.bannerItems || {};
+
             // Render Gachapon Banners
             const bannerContainer = document.getElementById('gacha-banners-list');
             bannerContainer.innerHTML = "";
@@ -1042,7 +1180,9 @@
                     bannerContainer.innerHTML += `
                         <div class="gacha-banner-card">
                             <h3 style="margin-bottom:10px;">${b.name}</h3>
-                            <p style="color:#00E5FF; font-size:18px; font-weight:bold; margin: 10px 0 20px;">${b.cost} GEMS PER ROLL</p>
+                            <p style="color:#00E5FF; font-size:18px; font-weight:bold; margin: 10px 0 15px;">${b.cost} GEMS PER ROLL</p>
+                            <button onclick="openBannerDetail('${b.id}', '${b.name.replace(/'/g, "\\'")}')"
+                                style="width:100%; margin-bottom:8px; font-size:13px; border-color:rgba(255,255,255,0.3); color:#aaa;">BANNER DETAILS</button>
                             <button onclick="rollGachapon('${b.id}', ${b.cost})" class="primary-btn" style="width:100%;">ROLL <svg class="icon"><use href="#icon-dice"/></svg></button>
                         </div>
                     `;
@@ -1097,7 +1237,7 @@
                 if (result.success === false) {
                     localStorage.removeItem(cacheKey);
                     logout();
-                    alert("SESSION EXPIRED OR UNAUTHORIZED");
+                    showModal("SESSION EXPIRED OR UNAUTHORIZED", "ERROR");
                     return;
                 }
 
@@ -1113,7 +1253,7 @@
                 // If we had cached data, just keep showing it
                 if (!cachedPortalData) {
                     logout();
-                    alert("COULD NOT CONNECT TO SERVER DATA.");
+                    showModal("COULD NOT CONNECT TO SERVER DATA.", "ERROR");
                 }
             }
         }
@@ -1173,18 +1313,19 @@
                 const result = await response.json();
                 if (!result.success) {
                     // Revert on failure
-                    alert(result.error);
+                    showModal(result.error, 'ERROR');
                     loadStudentPortal(true);
                 }
             } catch (e) {
-                alert("CHANGE AVATAR CONNECTION FAILED.");
+                showModal('CHANGE AVATAR CONNECTION FAILED.', 'ERROR');
                 loadStudentPortal(true);
             }
         }
 
         // Roll Gachapon (optimistic gem deduction)
         async function rollGachapon(bannerId, cost) {
-            if (!confirm("SPEND GEMS TO ROLL THIS BANNER?")) return;
+            const confirmed = await showConfirm(`SPEND ${cost} GEMS TO ROLL THIS BANNER?`, 'ROLL GACHAPON');
+            if (!confirmed) return;
 
             // Optimistic: deduct gems instantly
             if (cost) {
@@ -1195,6 +1336,7 @@
             document.getElementById('gacha-roll-overlay').classList.remove('hidden');
             document.getElementById('gacha-roll-animation').classList.remove('hidden');
             document.getElementById('gacha-reveal-box').classList.add('hidden');
+            document.getElementById('reveal-duplicate-text').classList.add('hidden');
 
             const rollStartTime = Date.now();
 
@@ -1211,22 +1353,68 @@
                         document.getElementById('gacha-roll-animation').classList.add('hidden');
                         document.getElementById('reveal-item-img').src = result.item.imageUrl || 'https://via.placeholder.com/150';
                         document.getElementById('reveal-item-name').innerText = `${result.item.name} (${result.item.type.toUpperCase()})`;
-                        document.getElementById('gacha-reveal-box').classList.remove('hidden');
 
+                        // Handle duplicate avatar refund
+                        const dupText = document.getElementById('reveal-duplicate-text');
+                        if (result.isDuplicate) {
+                            dupText.innerText = `DUPLICATE! +${result.refundedGems} GEMS REFUNDED`;
+                            dupText.classList.remove('hidden');
+                        } else {
+                            dupText.classList.add('hidden');
+                        }
+
+                        document.getElementById('gacha-reveal-box').classList.remove('hidden');
                         document.getElementById('profile-gems').innerText = result.newGems;
                     } else {
                         document.getElementById('gacha-roll-overlay').classList.add('hidden');
-                        // Revert gems on failure
                         loadStudentPortal(true);
-                        alert("ROLL FAILED: " + result.error);
+                        showModal('ROLL FAILED: ' + result.error, 'ERROR');
                     }
                 }, remainingDelay);
 
             } catch (e) {
                 document.getElementById('gacha-roll-overlay').classList.add('hidden');
                 loadStudentPortal(true);
-                alert("ROLL CONNECTION FAILED.");
+                showModal('ROLL CONNECTION FAILED.', 'ERROR');
             }
+        }
+
+        // Banner Details
+        function openBannerDetail(bannerId, bannerName) {
+            const items = cachedBannerItems[bannerId] || [];
+            document.getElementById('banner-detail-title').innerText = bannerName + ' — DROP RATES';
+            const content = document.getElementById('banner-detail-content');
+
+            if (items.length === 0) {
+                content.innerHTML = '<p style="color:#888;">NO ITEMS IN THIS BANNER.</p>';
+            } else {
+                // Sort by drop rate descending
+                const sorted = [...items].sort((a, b) => b.dropRate - a.dropRate);
+                const maxRate = Math.max(...sorted.map(i => i.dropRate));
+
+                let html = `<table class="banner-detail-table">
+                    <thead><tr><th>ITEM</th><th>TYPE</th><th style="text-align:right;">DROP RATE</th></tr></thead><tbody>`;
+                sorted.forEach(item => {
+                    const pct = (maxRate > 0) ? (item.dropRate / maxRate * 100) : 0;
+                    html += `<tr>
+                        <td style="font-weight:bold;">${item.name}</td>
+                        <td style="color:#888;">${item.type}</td>
+                        <td style="text-align:right;">
+                            <span style="color:#00E5FF; font-weight:bold;">${item.dropRate}%</span>
+                            <div class="rate-bar"><div class="rate-fill" style="width:${pct}%"></div></div>
+                        </td>
+                    </tr>`;
+                });
+                html += '</tbody></table>';
+                content.innerHTML = html;
+            }
+
+            document.getElementById('banner-detail-modal').classList.remove('hidden');
+        }
+
+        function closeBannerDetail(e) {
+            if (e && e.target !== e.currentTarget) return;
+            document.getElementById('banner-detail-modal').classList.add('hidden');
         }
 
         function closeGachaReveal() {
