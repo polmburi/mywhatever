@@ -833,6 +833,7 @@
         let isFirstTimeState = false;
         let cachedAvatars = [];
         let cachedCurrentAvatarId = "";
+        let cachedPortalData = null; // For optimistic rendering
 
         document.addEventListener('DOMContentLoaded', () => {
             if (currentStudentId && currentPasswordHash) {
@@ -986,10 +987,107 @@
             }
         }
 
-        // Fetch and load portal info
-        async function loadStudentPortal() {
+        // Render portal from data (shared by both cached and fresh loads)
+        function renderPortal(result) {
+            // Render Dashboard
+            document.getElementById('profile-id').innerText = result.student.id;
+            document.getElementById('profile-name').innerText = result.student.name;
+            document.getElementById('profile-class').innerText = result.student.className;
+            document.getElementById('profile-no').innerText = result.student.classNo;
+            document.getElementById('profile-gems').innerText = result.student.gems;
+
+            const avatarImg = document.getElementById('profile-avatar-img');
+            avatarImg.src = result.currentAvatarUrl || "https://api.dicebear.com/7.x/pixel-art/svg?seed=" + result.student.id;
+
+            // Render Assignments
+            const subBody = document.getElementById('submitted-list-body');
+            subBody.innerHTML = "";
+            if (result.submitted.length === 0) {
+                subBody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:#888;">NO SUBMISSIONS YET</td></tr>`;
+            } else {
+                result.submitted.forEach(item => {
+                    subBody.innerHTML += `
+                        <tr>
+                            <td>${item.name}</td>
+                            <td style="text-align:center;">${item.scorePeriod}</td>
+                            <td style="text-align:center; color: #00FF87; font-weight:bold;">${item.score} / ${item.maxScore} <span style="font-size:12px; color:#666;">(${item.weight}%)</span></td>
+                        </tr>
+                    `;
+                });
+            }
+
+            const unsubBody = document.getElementById('unsubmitted-list-body');
+            unsubBody.innerHTML = "";
+            if (result.unsubmitted.length === 0) {
+                unsubBody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:#888;">ALL ASSIGNMENTS TURNED IN!</td></tr>`;
+            } else {
+                result.unsubmitted.forEach(item => {
+                    unsubBody.innerHTML += `
+                        <tr>
+                            <td>${item.name}</td>
+                            <td style="text-align:center;">${item.scorePeriod}</td>
+                            <td style="text-align:center; color:#ff3333; font-weight:bold;">MAX: ${item.maxScore} <span style="font-size:12px; color:#666;">(${item.weight}%)</span></td>
+                        </tr>
+                    `;
+                });
+            }
+
+            // Render Gachapon Banners
+            const bannerContainer = document.getElementById('gacha-banners-list');
+            bannerContainer.innerHTML = "";
+            if (result.banners.length === 0) {
+                bannerContainer.innerHTML = `<p style="color:#888; text-align:center;">NO GACHAPON BANNERS ACTIVE RIGHT NOW.</p>`;
+            } else {
+                result.banners.forEach(b => {
+                    bannerContainer.innerHTML += `
+                        <div class="gacha-banner-card">
+                            <h3 style="margin-bottom:10px;">${b.name}</h3>
+                            <p style="color:#00E5FF; font-size:18px; font-weight:bold; margin: 10px 0 20px;">${b.cost} GEMS PER ROLL</p>
+                            <button onclick="rollGachapon('${b.id}', ${b.cost})" class="primary-btn" style="width:100%;">ROLL <svg class="icon"><use href="#icon-dice"/></svg></button>
+                        </div>
+                    `;
+                });
+            }
+
+            // Cache avatars for the picker modal
+            cachedAvatars = result.avatars;
+            cachedCurrentAvatarId = result.student.currentAvatar;
+
+            // Render Inventory Real Items
+            const realGrid = document.getElementById('real-inventory-grid');
+            realGrid.innerHTML = "";
+            if (result.inventory.length === 0) {
+                realGrid.innerHTML = `<p style="color:#888; text-align:center;">INVENTORY IS EMPTY.</p>`;
+            } else {
+                result.inventory.forEach(item => {
+                    realGrid.innerHTML += `
+                        <div class="item-card">
+                            <span class="qty-badge">x${item.qty}</span>
+                            <img src="${item.imageUrl || 'https://via.placeholder.com/70'}" alt="${item.name}">
+                            <div style="font-size:13px; font-weight:bold; text-transform:uppercase;">${item.name}</div>
+                        </div>
+                    `;
+                });
+            }
+
+            document.getElementById('main-panel').classList.remove('hidden');
+        }
+
+        // Fetch and load portal info (with optimistic cache)
+        async function loadStudentPortal(showSpinner) {
             document.getElementById('login-panel').classList.add('hidden');
-            toggleLoading(true);
+
+            // Try showing cached data instantly
+            const cacheKey = 'portal_cache_' + currentStudentId;
+            const cached = localStorage.getItem(cacheKey);
+            if (cached && !showSpinner) {
+                try {
+                    cachedPortalData = JSON.parse(cached);
+                    renderPortal(cachedPortalData);
+                } catch (e) { /* ignore bad cache */ }
+            } else {
+                toggleLoading(true);
+            }
 
             try {
                 const response = await fetch(`${apiWebUrl}?action=getStudentProfile&studentId=${currentStudentId}&password=${currentPasswordHash}`);
@@ -997,99 +1095,26 @@
                 toggleLoading(false);
 
                 if (result.success === false) {
+                    localStorage.removeItem(cacheKey);
                     logout();
                     alert("SESSION EXPIRED OR UNAUTHORIZED");
                     return;
                 }
 
-                // Render Dashboard
-                document.getElementById('profile-id').innerText = result.student.id;
-                document.getElementById('profile-name').innerText = result.student.name;
-                document.getElementById('profile-class').innerText = result.student.className;
-                document.getElementById('profile-no').innerText = result.student.classNo;
-                document.getElementById('profile-gems').innerText = result.student.gems;
+                // Save to cache for next visit
+                cachedPortalData = result;
+                localStorage.setItem(cacheKey, JSON.stringify(result));
 
-                const avatarImg = document.getElementById('profile-avatar-img');
-                avatarImg.src = result.currentAvatarUrl || "https://api.dicebear.com/7.x/pixel-art/svg?seed=" + result.student.id;
-
-                // Render Assignments
-                const subBody = document.getElementById('submitted-list-body');
-                subBody.innerHTML = "";
-                if (result.submitted.length === 0) {
-                    subBody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:#888;">NO SUBMISSIONS YET</td></tr>`;
-                } else {
-                    result.submitted.forEach(item => {
-                        subBody.innerHTML += `
-                            <tr>
-                                <td>${item.name}</td>
-                                <td style="text-align:center;">${item.scorePeriod}</td>
-                                <td style="text-align:center; color: #00FF87; font-weight:bold;">${item.score} / ${item.maxScore} <span style="font-size:12px; color:#666;">(${item.weight}%)</span></td>
-                            </tr>
-                        `;
-                    });
-                }
-
-                const unsubBody = document.getElementById('unsubmitted-list-body');
-                unsubBody.innerHTML = "";
-                if (result.unsubmitted.length === 0) {
-                    unsubBody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:#888;">ALL ASSIGNMENTS TURNED IN!</td></tr>`;
-                } else {
-                    result.unsubmitted.forEach(item => {
-                        unsubBody.innerHTML += `
-                            <tr>
-                                <td>${item.name}</td>
-                                <td style="text-align:center;">${item.scorePeriod}</td>
-                                <td style="text-align:center; color:#ff3333; font-weight:bold;">MAX: ${item.maxScore} <span style="font-size:12px; color:#666;">(${item.weight}%)</span></td>
-                            </tr>
-                        `;
-                    });
-                }
-
-                // Render Gachapon Banners
-                const bannerContainer = document.getElementById('gacha-banners-list');
-                bannerContainer.innerHTML = "";
-                if (result.banners.length === 0) {
-                    bannerContainer.innerHTML = `<p style="color:#888; text-align:center;">NO GACHAPON BANNERS ACTIVE RIGHT NOW.</p>`;
-                } else {
-                    result.banners.forEach(b => {
-                        bannerContainer.innerHTML += `
-                            <div class="gacha-banner-card">
-                                <h3 style="margin-bottom:10px;">${b.name}</h3>
-                                <p style="color:#00E5FF; font-size:18px; font-weight:bold; margin: 10px 0 20px;">${b.cost} GEMS PER ROLL</p>
-                                <button onclick="rollGachapon('${b.id}')" class="primary-btn" style="width:100%;">ROLL <svg class="icon"><use href="#icon-dice"/></svg></button>
-                            </div>
-                        `;
-                    });
-                }
-
-                // Cache avatars for the picker modal
-                cachedAvatars = result.avatars;
-                cachedCurrentAvatarId = result.student.currentAvatar;
-
-
-                // Render Inventory Real Items
-                const realGrid = document.getElementById('real-inventory-grid');
-                realGrid.innerHTML = "";
-                if (result.inventory.length === 0) {
-                    realGrid.innerHTML = `<p style="color:#888; text-align:center;">INVENTORY IS EMPTY.</p>`;
-                } else {
-                    result.inventory.forEach(item => {
-                        realGrid.innerHTML += `
-                            <div class="item-card">
-                                <span class="qty-badge">x${item.qty}</span>
-                                <img src="${item.imageUrl || 'https://via.placeholder.com/70'}" alt="${item.name}">
-                                <div style="font-size:13px; font-weight:bold; text-transform:uppercase;">${item.name}</div>
-                            </div>
-                        `;
-                    });
-                }
-
-                document.getElementById('main-panel').classList.remove('hidden');
+                // Re-render with fresh data
+                renderPortal(result);
 
             } catch (e) {
                 toggleLoading(false);
-                logout();
-                alert("COULD NOT CONNECT TO SERVER DATA.");
+                // If we had cached data, just keep showing it
+                if (!cachedPortalData) {
+                    logout();
+                    alert("COULD NOT CONNECT TO SERVER DATA.");
+                }
             }
         }
 
@@ -1121,37 +1146,65 @@
             document.getElementById('avatar-picker-modal').classList.add('hidden');
         }
 
-        // Change Equipped Avatar
+        // Change Equipped Avatar (optimistic)
         async function changeAvatar(itemId) {
             document.getElementById('avatar-picker-modal').classList.add('hidden');
-            toggleLoading(true);
+
+            // Optimistic: update avatar image instantly
+            const chosenAvatar = cachedAvatars.find(a => a.id === itemId);
+            if (chosenAvatar && chosenAvatar.imageUrl) {
+                document.getElementById('profile-avatar-img').src = chosenAvatar.imageUrl;
+            }
+            cachedCurrentAvatarId = itemId;
+
+            // Update local cache too
+            if (cachedPortalData) {
+                cachedPortalData.student.currentAvatar = itemId;
+                if (chosenAvatar && chosenAvatar.imageUrl) {
+                    cachedPortalData.currentAvatarUrl = chosenAvatar.imageUrl;
+                }
+                const cacheKey = 'portal_cache_' + currentStudentId;
+                localStorage.setItem(cacheKey, JSON.stringify(cachedPortalData));
+            }
+
+            // Sync with server in background (no spinner)
             try {
                 const response = await fetch(`${apiWebUrl}?action=changeAvatar&studentId=${currentStudentId}&password=${currentPasswordHash}&itemId=${itemId}`);
                 const result = await response.json();
-                toggleLoading(false);
-
-                if (result.success) {
-                    loadStudentPortal();
-                } else {
+                if (!result.success) {
+                    // Revert on failure
                     alert(result.error);
+                    loadStudentPortal(true);
                 }
             } catch (e) {
-                toggleLoading(false);
                 alert("CHANGE AVATAR CONNECTION FAILED.");
+                loadStudentPortal(true);
             }
         }
 
-        // Roll Gachapon
-        async function rollGachapon(bannerId) {
+        // Roll Gachapon (optimistic gem deduction)
+        async function rollGachapon(bannerId, cost) {
             if (!confirm("SPEND GEMS TO ROLL THIS BANNER?")) return;
+
+            // Optimistic: deduct gems instantly
+            if (cost) {
+                const currentGems = parseInt(document.getElementById('profile-gems').innerText) || 0;
+                document.getElementById('profile-gems').innerText = Math.max(0, currentGems - cost);
+            }
 
             document.getElementById('gacha-roll-overlay').classList.remove('hidden');
             document.getElementById('gacha-roll-animation').classList.remove('hidden');
             document.getElementById('gacha-reveal-box').classList.add('hidden');
 
+            const rollStartTime = Date.now();
+
             try {
                 const response = await fetch(`${apiWebUrl}?action=rollGacha&studentId=${currentStudentId}&password=${currentPasswordHash}&bannerId=${bannerId}`);
                 const result = await response.json();
+
+                // Show animation for at least 1.2s but don't wait longer than needed
+                const elapsed = Date.now() - rollStartTime;
+                const remainingDelay = Math.max(0, 1200 - elapsed);
 
                 setTimeout(() => {
                     if (result.success) {
@@ -1163,23 +1216,30 @@
                         document.getElementById('profile-gems').innerText = result.newGems;
                     } else {
                         document.getElementById('gacha-roll-overlay').classList.add('hidden');
+                        // Revert gems on failure
+                        loadStudentPortal(true);
                         alert("ROLL FAILED: " + result.error);
                     }
-                }, 2000);
+                }, remainingDelay);
 
             } catch (e) {
                 document.getElementById('gacha-roll-overlay').classList.add('hidden');
+                loadStudentPortal(true);
                 alert("ROLL CONNECTION FAILED.");
             }
         }
 
         function closeGachaReveal() {
             document.getElementById('gacha-roll-overlay').classList.add('hidden');
+            // Background refresh (no spinner)
             loadStudentPortal();
         }
 
         // Logout
         function logout() {
+            const cacheKey = 'portal_cache_' + currentStudentId;
+            localStorage.removeItem(cacheKey);
+            cachedPortalData = null;
             currentStudentId = "";
             currentPasswordHash = "";
             localStorage.removeItem('student_id');
