@@ -279,6 +279,15 @@
             border-color: rgba(0, 229, 255, 0.4);
         }
 
+        .banner-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 3px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
         /* Item Grids */
         .items-grid {
             display: grid;
@@ -623,6 +632,16 @@
             height: 100%;
             background: linear-gradient(90deg, #00E5FF, #00FF87);
             border-radius: 3px;
+        }
+
+        .banner-detail-table .item-thumb {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #444;
+            vertical-align: middle;
+            margin-right: 8px;
         }
     </style>
 </head>
@@ -1177,8 +1196,10 @@
                 bannerContainer.innerHTML = `<p style="color:#888; text-align:center;">NO GACHAPON BANNERS ACTIVE RIGHT NOW.</p>`;
             } else {
                 result.banners.forEach(b => {
+                    const bImg = b.imageUrl ? `<img class="banner-img" src="${b.imageUrl}" alt="${b.name}">` : '';
                     bannerContainer.innerHTML += `
                         <div class="gacha-banner-card">
+                            ${bImg}
                             <h3 style="margin-bottom:10px;">${b.name}</h3>
                             <p style="color:#00E5FF; font-size:18px; font-weight:bold; margin: 10px 0 15px;">${b.cost} GEMS PER ROLL</p>
                             <button onclick="openBannerDetail('${b.id}', '${b.name.replace(/'/g, "\\'")}')"
@@ -1396,8 +1417,9 @@
                     <thead><tr><th>ITEM</th><th>TYPE</th><th style="text-align:right;">DROP RATE</th></tr></thead><tbody>`;
                 sorted.forEach(item => {
                     const pct = (maxRate > 0) ? (item.dropRate / maxRate * 100) : 0;
+                    const imgSrc = item.imageUrl || 'https://via.placeholder.com/36';
                     html += `<tr>
-                        <td style="font-weight:bold;">${item.name}</td>
+                        <td><img class="item-thumb" src="${imgSrc}" alt="${item.name}"><span style="font-weight:bold;">${item.name}</span></td>
                         <td style="color:#888;">${item.type}</td>
                         <td style="text-align:right;">
                             <span style="color:#00E5FF; font-weight:bold;">${item.dropRate}%</span>
