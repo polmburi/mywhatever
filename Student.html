@@ -643,6 +643,80 @@
             vertical-align: middle;
             margin-right: 8px;
         }
+
+        #banner-detail-content {
+            max-height: 55vh;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        #banner-detail-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #banner-detail-content::-webkit-scrollbar-thumb {
+            background: rgba(0, 229, 255, 0.3);
+            border-radius: 3px;
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .nav-tabs {
+                gap: 10px;
+                margin-bottom: 15px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .nav-tabs button {
+                padding: 8px 10px;
+                font-size: 13px;
+            }
+
+            .flex-panel {
+                gap: 15px;
+            }
+
+            .panel {
+                padding: 15px;
+            }
+
+            .avatar-container {
+                width: 100px;
+                height: 100px;
+            }
+
+            .item-card img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .login-container {
+                margin: 40px auto 0;
+            }
+
+            table {
+                font-size: 13px;
+            }
+
+            th,
+            td {
+                padding: 8px 6px;
+            }
+
+            .banner-detail-table .item-thumb {
+                width: 28px;
+                height: 28px;
+                margin-right: 4px;
+            }
+        }
     </style>
 </head>
 
@@ -698,7 +772,8 @@
                 d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
         </symbol>
         <symbol id="icon-materials" viewBox="0 0 24 24">
-            <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/>
+            <path
+                d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z" />
         </symbol>
     </svg>
 
@@ -873,7 +948,8 @@
         <!-- GACHAPON TAB -->
         <div id="gacha-tab" class="tab-content hidden">
             <div class="panel">
-                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">
                     <h3 class="text-accent" style="margin: 0;"><svg class="icon">
                             <use href="#icon-dice" />
                         </svg> CHOOSE A BANNER</h3>
