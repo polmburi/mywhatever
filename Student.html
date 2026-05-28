@@ -697,6 +697,9 @@
             <path
                 d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
         </symbol>
+        <symbol id="icon-materials" viewBox="0 0 24 24">
+            <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/>
+        </symbol>
     </svg>
 
     <!-- ============ LOGIN PANEL ============ -->
@@ -754,6 +757,9 @@
             <button onclick="switchTab('assignments-tab', this)"><svg class="icon">
                     <use href="#icon-doc" />
                 </svg> ASSIGNMENTS</button>
+            <button onclick="switchTab('materials-tab', this)"><svg class="icon">
+                    <use href="#icon-materials" />
+                </svg> MATERIALS</button>
             <button onclick="switchTab('gacha-tab', this)"><svg class="icon">
                     <use href="#icon-dice" />
                 </svg> GACHAPON</button>
@@ -842,6 +848,25 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+
+        <!-- MATERIALS TAB -->
+        <div id="materials-tab" class="tab-content hidden">
+            <div class="panel">
+                <h3 style="color:#00E5FF;"><svg class="icon">
+                        <use href="#icon-materials" />
+                    </svg> MATERIALS</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NAME</th>
+                            <th style="width: 150px; text-align: center;">LINK</th>
+                        </tr>
+                    </thead>
+                    <tbody id="materials-list-body">
+                    </tbody>
+                </table>
             </div>
         </div>
 
@@ -1235,6 +1260,28 @@
                         </div>
                     `;
                 });
+            }
+
+            // Render Materials
+            const matBody = document.getElementById('materials-list-body');
+            if (matBody) {
+                matBody.innerHTML = "";
+                if (!result.materials || result.materials.length === 0) {
+                    matBody.innerHTML = `<tr><td colspan="2" style="text-align:center; color:#888;">NO MATERIALS AVAILABLE</td></tr>`;
+                } else {
+                    result.materials.forEach(item => {
+                        matBody.innerHTML += `
+                            <tr>
+                                <td style="font-weight: bold; vertical-align: middle;">${item.name}</td>
+                                <td style="text-align:center;">
+                                    <a href="${item.link}" target="_blank" style="text-decoration:none;">
+                                        <button class="primary-btn" style="padding: 5px 15px; font-size: 13px;">OPEN LINK</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                }
             }
 
             document.getElementById('main-panel').classList.remove('hidden');
