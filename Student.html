@@ -848,9 +848,14 @@
         <!-- GACHAPON TAB -->
         <div id="gacha-tab" class="tab-content hidden">
             <div class="panel">
-                <h3 class="text-accent"><svg class="icon">
-                        <use href="#icon-dice" />
-                    </svg> CHOOSE A BANNER</h3>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">
+                    <h3 class="text-accent" style="margin: 0;"><svg class="icon">
+                            <use href="#icon-dice" />
+                        </svg> CHOOSE A BANNER</h3>
+                    <div style="font-size: 16px; font-weight: bold; color: #a0a0a0;">
+                        YOUR GEMS: <span class="gacha-tab-gems" style="color: #00E5FF; font-size: 20px;">0</span>
+                    </div>
+                </div>
                 <div id="gacha-banners-list"
                     style="display:grid; grid-template-columns: 1fr; max-width: 560px; margin: 15px auto 0; gap:20px;">
                 </div>
@@ -1149,6 +1154,7 @@
             document.getElementById('profile-class').innerText = result.student.className;
             document.getElementById('profile-no').innerText = result.student.classNo;
             document.getElementById('profile-gems').innerText = result.student.gems;
+            document.querySelectorAll('.gacha-tab-gems').forEach(el => el.innerText = result.student.gems);
 
             const avatarImg = document.getElementById('profile-avatar-img');
             avatarImg.src = result.currentAvatarUrl || "https://api.dicebear.com/7.x/pixel-art/svg?seed=" + result.student.id;
@@ -1351,7 +1357,9 @@
             // Optimistic: deduct gems instantly
             if (cost) {
                 const currentGems = parseInt(document.getElementById('profile-gems').innerText) || 0;
-                document.getElementById('profile-gems').innerText = Math.max(0, currentGems - cost);
+                const newGemsVal = Math.max(0, currentGems - cost);
+                document.getElementById('profile-gems').innerText = newGemsVal;
+                document.querySelectorAll('.gacha-tab-gems').forEach(el => el.innerText = newGemsVal);
             }
 
             document.getElementById('gacha-roll-overlay').classList.remove('hidden');
@@ -1373,7 +1381,7 @@
                     if (result.success) {
                         document.getElementById('gacha-roll-animation').classList.add('hidden');
                         document.getElementById('reveal-item-img').src = result.item.imageUrl || 'https://via.placeholder.com/150';
-                        document.getElementById('reveal-item-name').innerText = `${result.item.name} (${result.item.type.toUpperCase()})`;
+                        document.getElementById('reveal-item-name').innerText = result.item.name;
 
                         // Handle duplicate avatar refund
                         const dupText = document.getElementById('reveal-duplicate-text');
@@ -1386,6 +1394,7 @@
 
                         document.getElementById('gacha-reveal-box').classList.remove('hidden');
                         document.getElementById('profile-gems').innerText = result.newGems;
+                        document.querySelectorAll('.gacha-tab-gems').forEach(el => el.innerText = result.newGems);
                     } else {
                         document.getElementById('gacha-roll-overlay').classList.add('hidden');
                         loadStudentPortal(true);
