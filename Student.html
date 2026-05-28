@@ -1534,7 +1534,8 @@
 
         // Banner Details
         function openBannerDetail(bannerId, bannerName) {
-            const items = cachedBannerItems[bannerId] || [];
+            const trimmedId = (bannerId || '').trim();
+            const items = cachedBannerItems[trimmedId] || [];
             document.getElementById('banner-detail-title').innerText = bannerName + ' — DROP RATES';
             const content = document.getElementById('banner-detail-content');
 
