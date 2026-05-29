@@ -984,8 +984,15 @@
     <!-- GACHA ROLL SPINNER MODAL -->
     <div id="gacha-roll-overlay" class="spinner-overlay hidden">
         <!-- Spinning animation -->
-        <div id="gacha-roll-animation" class="roll-animation-box">
-            <div class="roll-ball spinning"></div>
+        <div id="gacha-roll-animation" class="roll-animation-box"
+            style="background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); padding: 30px; max-width: 320px; width: 90%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div class="avatar-container"
+                style="width: 150px; height: 150px; border: 4px solid #00E5FF; border-radius: 50%; overflow: hidden; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05);">
+                <img id="gacha-roll-avatar" src="https://i.postimg.cc/FK5XzhGZ/logo-ACS.png"
+                    style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.1s ease-in-out;">
+            </div>
+            <h3 id="gacha-roll-name" style="margin: 0; font-size: 20px; color: #fff; text-transform: uppercase;">
+                ROLLING...</h3>
         </div>
 
         <!-- Drop reveal -->
@@ -1472,7 +1479,10 @@
             }
         }
 
-        // Roll Gachapon (optimistic gem deduction)
+        let rollResult = null;
+        let rollFinishedAnimation = false;
+
+        // Roll Gachapon (optimistic gem deduction with cycling animation)
         async function rollGachapon(bannerId, cost) {
             const confirmed = await showConfirm(`SPEND ${cost} GEMS TO ROLL THIS BANNER?`, 'ROLL GACHAPON');
             if (!confirmed) return;
@@ -1490,45 +1500,87 @@
             document.getElementById('gacha-reveal-box').classList.add('hidden');
             document.getElementById('reveal-duplicate-text').classList.add('hidden');
 
-            const rollStartTime = Date.now();
+            const items = cachedBannerItems[bannerId.trim()] || [];
+            const rollAvatarEl = document.getElementById('gacha-roll-avatar');
+            const rollNameEl = document.getElementById('gacha-roll-name');
 
+            // Reset animation state
+            rollResult = null;
+            rollFinishedAnimation = false;
+            let ticks = 0;
+            let speed = 60;
+            const maxTicks = 35; // Around 2.5-3 seconds of rolling
+
+            function tick() {
+                ticks++;
+                if (items.length > 0) {
+                    const randItem = items[Math.floor(Math.random() * items.length)];
+                    rollAvatarEl.src = randItem.imageUrl || 'https://via.placeholder.com/150';
+                    rollNameEl.innerText = randItem.name;
+                }
+                rollAvatarEl.style.transform = `scale(${ticks % 2 === 0 ? 0.95 : 1.05})`;
+
+                if (ticks < maxTicks) {
+                    if (ticks > 25) speed += 30;
+                    if (ticks > 30) speed += 50;
+                    setTimeout(tick, speed);
+                } else {
+                    rollFinishedAnimation = true;
+                    checkReveal();
+                }
+            }
+
+            // Start animation
+            tick();
+
+            // Run network request in parallel
             try {
                 const response = await fetch(`${apiWebUrl}?action=rollGacha&studentId=${currentStudentId}&password=${currentPasswordHash}&bannerId=${bannerId}`);
-                const result = await response.json();
-
-                // Show animation for at least 1.2s but don't wait longer than needed
-                const elapsed = Date.now() - rollStartTime;
-                const remainingDelay = Math.max(0, 1200 - elapsed);
-
-                setTimeout(() => {
-                    if (result.success) {
-                        document.getElementById('gacha-roll-animation').classList.add('hidden');
-                        document.getElementById('reveal-item-img').src = result.item.imageUrl || 'https://via.placeholder.com/150';
-                        document.getElementById('reveal-item-name').innerText = result.item.name;
-
-                        // Handle duplicate avatar refund
-                        const dupText = document.getElementById('reveal-duplicate-text');
-                        if (result.isDuplicate) {
-                            dupText.innerText = `DUPLICATE! +${result.refundedGems} GEMS REFUNDED`;
-                            dupText.classList.remove('hidden');
-                        } else {
-                            dupText.classList.add('hidden');
-                        }
-
-                        document.getElementById('gacha-reveal-box').classList.remove('hidden');
-                        document.getElementById('profile-gems').innerText = result.newGems;
-                        document.querySelectorAll('.gacha-tab-gems').forEach(el => el.innerText = result.newGems);
-                    } else {
-                        document.getElementById('gacha-roll-overlay').classList.add('hidden');
-                        loadStudentPortal(true);
-                        showModal('ROLL FAILED: ' + result.error, 'ERROR');
-                    }
-                }, remainingDelay);
-
+                rollResult = await response.json();
+                checkReveal();
             } catch (e) {
-                document.getElementById('gacha-roll-overlay').classList.add('hidden');
-                loadStudentPortal(true);
-                showModal('ROLL CONNECTION FAILED.', 'ERROR');
+                rollResult = { success: false, error: 'CONNECTION FAILED' };
+                checkReveal();
+            }
+
+            function checkReveal() {
+                // Wait for both animation to finish AND network result to return
+                if (!rollFinishedAnimation || !rollResult) {
+                    // If animation finished but network hasn't returned yet, continue slow spin
+                    if (rollFinishedAnimation && !rollResult) {
+                        if (items.length > 0) {
+                            const randItem = items[Math.floor(Math.random() * items.length)];
+                            rollAvatarEl.src = randItem.imageUrl || 'https://via.placeholder.com/150';
+                            rollNameEl.innerText = randItem.name;
+                        }
+                        setTimeout(checkReveal, 200);
+                    }
+                    return;
+                }
+
+                // Show result
+                if (rollResult.success) {
+                    document.getElementById('gacha-roll-animation').classList.add('hidden');
+                    document.getElementById('reveal-item-img').src = rollResult.item.imageUrl || 'https://via.placeholder.com/150';
+                    document.getElementById('reveal-item-name').innerText = rollResult.item.name;
+
+                    // Handle duplicate avatar refund
+                    const dupText = document.getElementById('reveal-duplicate-text');
+                    if (rollResult.isDuplicate) {
+                        dupText.innerText = `DUPLICATE! +${rollResult.refundedGems} GEMS REFUNDED`;
+                        dupText.classList.remove('hidden');
+                    } else {
+                        dupText.classList.add('hidden');
+                    }
+
+                    document.getElementById('gacha-reveal-box').classList.remove('hidden');
+                    document.getElementById('profile-gems').innerText = rollResult.newGems;
+                    document.querySelectorAll('.gacha-tab-gems').forEach(el => el.innerText = rollResult.newGems);
+                } else {
+                    document.getElementById('gacha-roll-overlay').classList.add('hidden');
+                    loadStudentPortal(true);
+                    showModal('ROLL FAILED: ' + rollResult.error, 'ERROR');
+                }
             }
         }
 
