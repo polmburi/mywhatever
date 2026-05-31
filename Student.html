@@ -231,11 +231,39 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            border: 3px solid #00E5FF;
+            border: 3px solid #ffffff;
             overflow: hidden;
             background: #222;
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
             margin: 0 auto 15px;
+            box-sizing: border-box;
+        }
+
+        .avatar-container.rarity-n {
+            border-color: #ffffff !important;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3) !important;
+        }
+
+        .avatar-container.rarity-r {
+            border-color: #888888 !important;
+            box-shadow: 0 0 15px rgba(136, 136, 136, 0.3) !important;
+        }
+
+        .avatar-container.rarity-sr {
+            border-color: #00E5FF !important;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.3) !important;
+        }
+
+        .avatar-container.rarity-ssr {
+            border-color: #A855F7 !important;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.3) !important;
+        }
+
+        .avatar-container.rarity-ur {
+            border: 3px solid transparent !important;
+            background: linear-gradient(#222, #222) padding-box,
+                linear-gradient(45deg, #ff007f, #ff00ff, #7f00ff, #0000ff, #007fff, #00ffff, #00ff7f, #00ff00, #7fff00, #ffff00, #ff7f00, #ff0000) border-box !important;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5) !important;
         }
 
         .avatar-container img {
@@ -317,6 +345,62 @@
             margin-bottom: 8px;
         }
 
+        .item-card.rarity-n img {
+            border-color: #ffffff !important;
+        }
+
+        .item-card.rarity-r img {
+            border-color: #888888 !important;
+        }
+
+        .item-card.rarity-sr img {
+            border-color: #00E5FF !important;
+        }
+
+        .item-card.rarity-ssr img {
+            border-color: #A855F7 !important;
+        }
+
+        .item-card.rarity-ur img {
+            border: 2px solid transparent !important;
+            background: linear-gradient(#222, #222) padding-box,
+                linear-gradient(45deg, #ff007f, #ff00ff, #7f00ff, #0000ff, #007fff, #00ffff, #00ff7f, #00ff00, #7fff00, #ffff00, #ff7f00, #ff0000) border-box !important;
+        }
+
+        .item-thumb {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #555;
+            vertical-align: middle;
+            margin-right: 10px;
+            background: #222;
+            box-sizing: border-box;
+        }
+
+        .item-thumb.rarity-n {
+            border-color: #ffffff !important;
+        }
+
+        .item-thumb.rarity-r {
+            border-color: #888888 !important;
+        }
+
+        .item-thumb.rarity-sr {
+            border-color: #00E5FF !important;
+        }
+
+        .item-thumb.rarity-ssr {
+            border-color: #A855F7 !important;
+        }
+
+        .item-thumb.rarity-ur {
+            border: 2px solid transparent !important;
+            background: linear-gradient(#222, #222) padding-box,
+                linear-gradient(45deg, #ff007f, #ff00ff, #7f00ff, #0000ff, #007fff, #00ffff, #00ff7f, #00ff00, #7fff00, #ffff00, #ff7f00, #ff0000) border-box !important;
+        }
+
         .item-card.active-avatar {
             border-color: #00E5FF;
             background: rgba(0, 229, 255, 0.05);
@@ -357,16 +441,18 @@
             font-size: 13px;
             color: #f0f0f0;
             pointer-events: none;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.15), 0 4px 16px rgba(0,0,0,0.6);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.15), 0 4px 16px rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(6px);
             opacity: 0;
             transition: opacity 0.15s ease;
             letter-spacing: 0.4px;
             line-height: 1.5;
         }
+
         #item-tooltip.visible {
             opacity: 1;
         }
+
         #item-tooltip .tooltip-name {
             font-size: 12px;
             color: #00E5FF;
@@ -552,15 +638,36 @@
         }
 
         .avatar-pick-item:hover {
-            background: rgba(0, 229, 255, 0.08);
-            border-color: rgba(0, 229, 255, 0.5);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
         }
 
         .avatar-pick-item.equipped {
-            border-color: #00E5FF;
             background: rgba(0, 229, 255, 0.1);
-            box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
+        }
+
+        .avatar-pick-item.rarity-n {
+            border-color: #ffffff !important;
+        }
+
+        .avatar-pick-item.rarity-r {
+            border-color: #888888 !important;
+        }
+
+        .avatar-pick-item.rarity-sr {
+            border-color: #00E5FF !important;
+        }
+
+        .avatar-pick-item.rarity-ssr {
+            border-color: #A855F7 !important;
+        }
+
+        .avatar-pick-item.rarity-ur {
+            border: 2px solid transparent !important;
+            background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
+                linear-gradient(45deg, #ff007f, #ff00ff, #7f00ff, #0000ff, #007fff, #00ffff, #00ff7f, #00ff00, #7fff00, #ffff00, #ff7f00, #ff0000) border-box !important;
         }
 
         .avatar-pick-item img {
@@ -748,6 +855,22 @@
                 height: 28px;
                 margin-right: 4px;
             }
+
+            img[alt="stars"] {
+                max-height: 14px !important;
+            }
+        }
+
+        img[alt="stars"] {
+            height: 16px !important;
+            width: auto !important;
+            max-width: 100% !important;
+            border-radius: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
+            object-fit: contain !important;
+            display: inline-block !important;
         }
     </style>
 </head>
@@ -1024,8 +1147,9 @@
         <!-- Spinning animation -->
         <div id="gacha-roll-animation" class="roll-animation-box"
             style="background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); padding: 30px; max-width: 320px; width: 90%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <div class="avatar-container"
-                style="width: 150px; height: 150px; border: 4px solid #00E5FF; border-radius: 50%; overflow: hidden; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05);">
+            <!-- FIX: Added ID for JS targeting, default rarity-n class, and transition:none override -->
+            <div id="gacha-roll-avatar-container" class="avatar-container rarity-n"
+                style="width: 150px; height: 150px; border: 4px solid #00E5FF; border-radius: 50%; overflow: hidden; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); transition: none !important;">
                 <img id="gacha-roll-avatar" src="https://i.postimg.cc/FK5XzhGZ/logo-ACS.png"
                     style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.1s ease-in-out;">
             </div>
@@ -1046,10 +1170,12 @@
             <!-- Single roll reveal -->
             <div id="single-reveal-content"
                 style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-                <div class="avatar-container" style="width: 140px; height: 140px; border-color: #00FF87;">
+                <div class="avatar-container" style="width: 140px; height: 140px;">
                     <img id="reveal-item-img" src="" alt="Dropped Item">
                 </div>
                 <h3 id="reveal-item-name" style="color: #fff; margin-bottom: 5px; text-align: center;">ITEM NAME</h3>
+                <img id="reveal-item-stars" src="" style="height: 18px; margin-bottom: 10px; display: block;"
+                    alt="stars">
                 <p id="reveal-duplicate-text" class="refund-text hidden"></p>
             </div>
 
@@ -1122,8 +1248,16 @@
         let isFirstTimeState = false;
         let cachedAvatars = [];
         let cachedCurrentAvatarId = "";
-        let cachedPortalData = null; // For optimistic rendering
-        let cachedBannerItems = {}; // For banner details modal
+        let cachedPortalData = null;
+        let cachedBannerItems = {};
+
+        const rarityStars = {
+            'N': 'https://i.postimg.cc/0jgjJ5Fj/1star.png',
+            'R': 'https://i.postimg.cc/Gt0ts3V9/2star.png',
+            'SR': 'https://i.postimg.cc/PJGJ8f9P/3star.png',
+            'SSR': 'https://i.postimg.cc/C5y5fMXR/4star.png',
+            'UR': 'https://i.postimg.cc/d3M3TQp7/5star.png'
+        };
 
         // Modal helpers
         function showModal(msg, title) {
@@ -1167,8 +1301,6 @@
             document.getElementById('login-panel').classList.remove('hidden');
             document.getElementById('main-panel').classList.add('hidden');
             document.getElementById('login-error').innerText = "";
-
-            // Reset state
             isFirstTimeState = false;
             document.querySelector('.id-registered').classList.add('hidden');
             document.querySelector('.id-first-time').classList.add('hidden');
@@ -1189,7 +1321,6 @@
             const registeredVisible = !document.querySelector('.id-registered').classList.contains('hidden');
             const firstTimeVisible = !document.querySelector('.id-first-time').classList.contains('hidden');
 
-            // Step 1: Initial ID check (neither section visible yet)
             if (!registeredVisible && !firstTimeVisible) {
                 toggleLoading(true);
                 try {
@@ -1218,7 +1349,6 @@
                 return;
             }
 
-            // Step 2: Handle First-time password setup
             if (isFirstTimeState) {
                 const cPass = document.getElementById('create-pass').value;
                 const confPass = document.getElementById('confirm-pass').value;
@@ -1255,7 +1385,6 @@
                 return;
             }
 
-            // Step 3: Authenticate standard login
             const passVal = document.getElementById('login-pass').value;
             if (!passVal) {
                 errorText.innerText = "PLEASE ENTER PASSWORD.";
@@ -1288,14 +1417,12 @@
             }
         }
 
-        // Toggle global Loading
         function toggleLoading(show) {
             const spinner = document.getElementById('loading-spinner');
             if (show) spinner.classList.remove('hidden');
             else spinner.classList.add('hidden');
         }
 
-        // Tab Switching
         function switchTab(tabId, btnElement) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
             document.getElementById(tabId).classList.remove('hidden');
@@ -1306,9 +1433,7 @@
             }
         }
 
-        // Render portal from data (shared by both cached and fresh loads)
         function renderPortal(result) {
-            // Render Dashboard
             document.getElementById('profile-id').innerText = result.student.id;
             document.getElementById('profile-name').innerText = result.student.name;
             document.getElementById('profile-class').innerText = result.student.className;
@@ -1319,7 +1444,12 @@
             const avatarImg = document.getElementById('profile-avatar-img');
             avatarImg.src = result.currentAvatarUrl || "https://api.dicebear.com/7.x/pixel-art/svg?seed=" + result.student.id;
 
-            // Render Assignments
+            const profileRarity = result.currentAvatarRarity || 'N';
+            const avatarContainer = avatarImg.closest('.avatar-container');
+            if (avatarContainer) {
+                avatarContainer.className = 'avatar-container rarity-' + profileRarity.toLowerCase();
+            }
+
             const subBody = document.getElementById('submitted-list-body');
             subBody.innerHTML = "";
             if (result.submitted.length === 0) {
@@ -1352,10 +1482,8 @@
                 });
             }
 
-            // Cache banner items
             cachedBannerItems = result.bannerItems || {};
 
-            // Render Gachapon Banners
             const bannerContainer = document.getElementById('gacha-banners-list');
             bannerContainer.innerHTML = "";
             if (result.banners.length === 0) {
@@ -1379,11 +1507,9 @@
                 });
             }
 
-            // Cache avatars for the picker modal
             cachedAvatars = result.avatars;
             cachedCurrentAvatarId = result.student.currentAvatar;
 
-            // Render Inventory Real Items
             const realGrid = document.getElementById('real-inventory-grid');
             realGrid.innerHTML = "";
             if (result.inventory.length === 0) {
@@ -1392,17 +1518,18 @@
                 result.inventory.forEach(item => {
                     const descSafe = (item.description || 'NO DESCRIPTION AVAILABLE').replace(/`/g, "'");
                     const nameSafe = item.name.replace(/`/g, "'");
+                    const rarityClass = 'rarity-' + (item.rarity || 'n').toLowerCase();
                     realGrid.innerHTML += `
-                        <div class="item-card" data-desc="${descSafe}" data-name="${nameSafe}">
+                        <div class="item-card ${rarityClass}" data-desc="${descSafe}" data-name="${nameSafe}">
                             <span class="qty-badge">x${item.qty}</span>
                             <img src="${item.imageUrl || 'https://via.placeholder.com/70'}" alt="${item.name}">
                             <div style="font-size:13px; font-weight:bold; text-transform:uppercase;">${item.name}</div>
+                            <img src="${rarityStars[item.rarity || 'N']}" style="height: 16px; margin: 5px auto 0; display: block;" alt="stars">
                         </div>
                     `;
                 });
             }
 
-            // Render Materials
             const matBody = document.getElementById('materials-list-body');
             if (matBody) {
                 matBody.innerHTML = "";
@@ -1427,7 +1554,6 @@
             document.getElementById('main-panel').classList.remove('hidden');
         }
 
-        // Helper to preload images before showing portal
         function preloadImages(urls) {
             const uniqueUrls = [...new Set(urls.filter(Boolean))];
             if (uniqueUrls.length === 0) return Promise.resolve();
@@ -1442,7 +1568,7 @@
                         resolved = true;
                         resolve();
                     }
-                }, 5000); // 5 seconds max wait
+                }, 5000);
 
                 function checkDone() {
                     loadedCount++;
@@ -1462,11 +1588,9 @@
             });
         }
 
-        // Fetch and load portal info (with optimistic cache)
         async function loadStudentPortal(showSpinner) {
             document.getElementById('login-panel').classList.add('hidden');
 
-            // Try showing cached data instantly
             const cacheKey = 'portal_cache_' + currentStudentId;
             const cached = localStorage.getItem(cacheKey);
             if (cached && !showSpinner) {
@@ -1490,7 +1614,6 @@
                     return;
                 }
 
-                // Gather all image URLs to preload
                 const imagesToLoad = [];
                 if (result.currentAvatarUrl) imagesToLoad.push(result.currentAvatarUrl);
                 if (result.banners) {
@@ -1503,21 +1626,17 @@
                     result.avatars.forEach(item => { if (item.imageUrl) imagesToLoad.push(item.imageUrl); });
                 }
 
-                // Preload all gathered images before hiding processing overlay
                 await preloadImages(imagesToLoad);
 
                 toggleLoading(false);
 
-                // Save to cache for next visit
                 cachedPortalData = result;
                 localStorage.setItem(cacheKey, JSON.stringify(result));
 
-                // Re-render with fresh data
                 renderPortal(result);
 
             } catch (e) {
                 toggleLoading(false);
-                // If we had cached data, just keep showing it
                 if (!cachedPortalData) {
                     logout();
                     showModal("COULD NOT CONNECT TO SERVER DATA.", "ERROR");
@@ -1525,7 +1644,6 @@
             }
         }
 
-        // Avatar Picker Modal
         function openAvatarPicker() {
             const grid = document.getElementById('avatar-picker-grid');
             grid.innerHTML = "";
@@ -1533,12 +1651,24 @@
             if (cachedAvatars.length === 0) {
                 grid.innerHTML = `<p style="color:#888; text-align:center; grid-column: 1/-1;">NO AVATARS YET. ROLL GACHA TO GET SOME!</p>`;
             } else {
-                cachedAvatars.forEach(item => {
+                const rarityOrder = { 'N': 0, 'R': 1, 'SR': 2, 'SSR': 3, 'UR': 4 };
+                const sorted = [...cachedAvatars].sort((a, b) => {
+                    const orderA = rarityOrder[a.rarity] !== undefined ? rarityOrder[a.rarity] : 99;
+                    const orderB = rarityOrder[b.rarity] !== undefined ? rarityOrder[b.rarity] : 99;
+                    if (orderA !== orderB) {
+                        return orderA - orderB;
+                    }
+                    return (b.indexNo || 0) - (a.indexNo || 0);
+                });
+
+                sorted.forEach(item => {
                     const isEquipped = cachedCurrentAvatarId === item.id;
+                    const rarityClass = 'rarity-' + (item.rarity || 'N').toLowerCase();
                     grid.innerHTML += `
-                        <div class="avatar-pick-item ${isEquipped ? 'equipped' : ''}" onclick="changeAvatar('${item.id}')">
+                        <div class="avatar-pick-item ${rarityClass} ${isEquipped ? 'equipped' : ''}" onclick="changeAvatar('${item.id}')">
                             <img src="${item.imageUrl || 'https://via.placeholder.com/60'}" alt="${item.name}">
                             <div class="pick-name">${item.name}</div>
+                            <img src="${rarityStars[item.rarity || 'N']}" style="height: 14px; margin: 4px auto 0; display: block;" alt="stars">
                             ${isEquipped ? '<div style="font-size:9px; color:#00E5FF; font-weight:bold; margin-top:2px;">EQUIPPED</div>' : ''}
                         </div>
                     `;
@@ -1553,33 +1683,34 @@
             document.getElementById('avatar-picker-modal').classList.add('hidden');
         }
 
-        // Change Equipped Avatar (optimistic)
         async function changeAvatar(itemId) {
             document.getElementById('avatar-picker-modal').classList.add('hidden');
 
-            // Optimistic: update avatar image instantly
             const chosenAvatar = cachedAvatars.find(a => a.id === itemId);
             if (chosenAvatar && chosenAvatar.imageUrl) {
-                document.getElementById('profile-avatar-img').src = chosenAvatar.imageUrl;
+                const avatarImg = document.getElementById('profile-avatar-img');
+                avatarImg.src = chosenAvatar.imageUrl;
+                const avatarContainer = avatarImg.closest('.avatar-container');
+                if (avatarContainer) {
+                    avatarContainer.className = 'avatar-container rarity-' + (chosenAvatar.rarity || 'n').toLowerCase();
+                }
             }
             cachedCurrentAvatarId = itemId;
 
-            // Update local cache too
             if (cachedPortalData) {
                 cachedPortalData.student.currentAvatar = itemId;
                 if (chosenAvatar && chosenAvatar.imageUrl) {
                     cachedPortalData.currentAvatarUrl = chosenAvatar.imageUrl;
+                    cachedPortalData.currentAvatarRarity = chosenAvatar.rarity || "N";
                 }
                 const cacheKey = 'portal_cache_' + currentStudentId;
                 localStorage.setItem(cacheKey, JSON.stringify(cachedPortalData));
             }
 
-            // Sync with server in background (no spinner)
             try {
                 const response = await fetch(`${apiWebUrl}?action=changeAvatar&studentId=${currentStudentId}&password=${currentPasswordHash}&itemId=${itemId}`);
                 const result = await response.json();
                 if (!result.success) {
-                    // Revert on failure
                     showModal(result.error, 'ERROR');
                     loadStudentPortal(true);
                 }
@@ -1592,12 +1723,10 @@
         let rollResult = null;
         let rollFinishedAnimation = false;
 
-        // Roll Gachapon (optimistic gem deduction with cycling animation)
         async function rollGachapon(bannerId, cost) {
             const confirmed = await showConfirm(`SPEND ${cost} GEMS TO ROLL THIS BANNER?`, 'ROLL GACHAPON');
             if (!confirmed) return;
 
-            // Optimistic: deduct gems instantly
             if (cost) {
                 const currentGems = parseInt(document.getElementById('profile-gems').innerText) || 0;
                 const newGemsVal = Math.max(0, currentGems - cost);
@@ -1613,21 +1742,38 @@
             const items = cachedBannerItems[bannerId.trim()] || [];
             const rollAvatarEl = document.getElementById('gacha-roll-avatar');
             const rollNameEl = document.getElementById('gacha-roll-name');
+            const animContainer = document.getElementById('gacha-roll-avatar-container');
 
-            // Reset animation state
+            // Reset animation container state
             rollResult = null;
             rollFinishedAnimation = false;
             let revealTimeout = null;
             let ticks = 0;
             let speed = 60;
-            const maxTicks = 35; // Around 2.5-3 seconds of rolling
+            const maxTicks = 35;
+
+            if (animContainer) {
+                animContainer.classList.remove('rarity-n', 'rarity-r', 'rarity-sr', 'rarity-ssr', 'rarity-ur');
+                animContainer.classList.add('rarity-n');
+                animContainer.style.transition = 'none'; // Disable transitions for instant sync
+            }
 
             function tick() {
                 ticks++;
                 if (items.length > 0) {
                     const randItem = items[Math.floor(Math.random() * items.length)];
-                    rollAvatarEl.src = randItem.imageUrl || 'https://via.placeholder.com/150';
+
+                    // FIX: Cache-busting timestamp to force fresh image load
+                    const imgUrl = (randItem.imageUrl || 'https://via.placeholder.com/150') + '?t=' + Date.now();
+                    rollAvatarEl.src = imgUrl;
                     rollNameEl.innerText = randItem.name;
+
+                    // FIX: Dynamic rarity border update synced with image
+                    const rarity = (randItem.rarity || 'N').toString().toUpperCase();
+                    if (animContainer) {
+                        animContainer.classList.remove('rarity-n', 'rarity-r', 'rarity-sr', 'rarity-ssr', 'rarity-ur');
+                        animContainer.classList.add('rarity-' + rarity.toLowerCase());
+                    }
                 }
                 rollAvatarEl.style.transform = `scale(${ticks % 2 === 0 ? 0.95 : 1.05})`;
 
@@ -1641,10 +1787,8 @@
                 }
             }
 
-            // Start animation
             tick();
 
-            // Run network request in parallel
             try {
                 const response = await fetch(`${apiWebUrl}?action=rollGacha&studentId=${currentStudentId}&password=${currentPasswordHash}&bannerId=${bannerId}`);
                 rollResult = await response.json();
@@ -1655,9 +1799,7 @@
             }
 
             function checkReveal() {
-                // Wait for both animation to finish AND network result to return
                 if (!rollFinishedAnimation || !rollResult) {
-                    // If animation finished but network hasn't returned yet, continue slow spin
                     if (rollFinishedAnimation && !rollResult) {
                         if (items.length > 0) {
                             const randItem = items[Math.floor(Math.random() * items.length)];
@@ -1671,19 +1813,29 @@
 
                 if (revealTimeout) return;
 
-                // Show result
                 if (rollResult.success) {
-                    // Land on the actual result item in the spinner animation box
                     rollAvatarEl.src = rollResult.item.imageUrl || 'https://via.placeholder.com/150';
                     rollNameEl.innerText = rollResult.item.name;
-                    rollAvatarEl.style.transform = 'scale(1.1)'; // Give it a slight pop/bounce
+                    rollAvatarEl.style.transform = 'scale(1.1)';
 
                     revealTimeout = setTimeout(() => {
                         document.getElementById('gacha-roll-animation').classList.add('hidden');
-                        document.getElementById('reveal-item-img').src = rollResult.item.imageUrl || 'https://via.placeholder.com/150';
-                        document.getElementById('reveal-item-name').innerText = rollResult.item.name;
+                        const revealImg = document.getElementById('reveal-item-img');
 
-                        // Handle duplicate avatar refund
+                        // FIX: Cache-busting for final reveal image
+                        const finalImgUrl = (rollResult.item.imageUrl || 'https://via.placeholder.com/150') + '?t=' + Date.now();
+                        revealImg.src = finalImgUrl;
+
+                        const singleRevealContainer = revealImg.closest('.avatar-container');
+                        if (singleRevealContainer) {
+                            singleRevealContainer.className = 'avatar-container rarity-' + (rollResult.item.rarity || 'n').toLowerCase();
+                        }
+                        document.getElementById('reveal-item-name').innerText = rollResult.item.name;
+                        const starsImg = document.getElementById('reveal-item-stars');
+                        if (starsImg) {
+                            starsImg.src = rarityStars[(rollResult.item.rarity || 'N').toUpperCase()] || rarityStars['N'];
+                        }
+
                         const dupText = document.getElementById('reveal-duplicate-text');
                         if (rollResult.isDuplicate) {
                             dupText.innerText = `DUPLICATE! +${rollResult.refundedGems} GEMS REFUNDED`;
@@ -1707,13 +1859,11 @@
             }
         }
 
-        // Roll 5 Times at once with guaranteed avatar
         async function rollGachapon5(bannerId, cost) {
             const totalCost = cost * 5;
             const confirmed = await showConfirm(`SPEND ${totalCost} GEMS TO ROLL 5 TIMES?`, 'ROLL 5X GACHAPON');
             if (!confirmed) return;
 
-            // Optimistic: deduct gems instantly
             if (totalCost) {
                 const currentGems = parseInt(document.getElementById('profile-gems').innerText) || 0;
                 const newGemsVal = Math.max(0, currentGems - totalCost);
@@ -1728,21 +1878,38 @@
             const items = cachedBannerItems[bannerId.trim()] || [];
             const rollAvatarEl = document.getElementById('gacha-roll-avatar');
             const rollNameEl = document.getElementById('gacha-roll-name');
+            const animContainer = document.getElementById('gacha-roll-avatar-container');
 
-            // Reset animation state
             let roll5Result = null;
             let rollFinishedAnimation = false;
             let revealTimeout = null;
             let ticks = 0;
             let speed = 60;
-            const maxTicks = 35; // Around 2.5-3 seconds of rolling
+            const maxTicks = 35;
+
+            // Reset animation container state
+            if (animContainer) {
+                animContainer.classList.remove('rarity-n', 'rarity-r', 'rarity-sr', 'rarity-ssr', 'rarity-ur');
+                animContainer.classList.add('rarity-n');
+                animContainer.style.transition = 'none';
+            }
 
             function tick() {
                 ticks++;
                 if (items.length > 0) {
                     const randItem = items[Math.floor(Math.random() * items.length)];
-                    rollAvatarEl.src = randItem.imageUrl || 'https://via.placeholder.com/150';
+
+                    // FIX: Cache-busting timestamp
+                    const imgUrl = (randItem.imageUrl || 'https://via.placeholder.com/150') + '?t=' + Date.now();
+                    rollAvatarEl.src = imgUrl;
                     rollNameEl.innerText = randItem.name;
+
+                    // FIX: Dynamic rarity border update
+                    const rarity = (randItem.rarity || 'N').toString().toUpperCase();
+                    if (animContainer) {
+                        animContainer.classList.remove('rarity-n', 'rarity-r', 'rarity-sr', 'rarity-ssr', 'rarity-ur');
+                        animContainer.classList.add('rarity-' + rarity.toLowerCase());
+                    }
                 }
                 rollAvatarEl.style.transform = `scale(${ticks % 2 === 0 ? 0.95 : 1.05})`;
 
@@ -1756,10 +1923,8 @@
                 }
             }
 
-            // Start animation
             tick();
 
-            // Run network request in parallel
             try {
                 const response = await fetch(`${apiWebUrl}?action=rollGacha5&studentId=${currentStudentId}&password=${currentPasswordHash}&bannerId=${bannerId}`);
                 roll5Result = await response.json();
@@ -1770,9 +1935,7 @@
             }
 
             function checkReveal() {
-                // Wait for both animation to finish AND network result to return
                 if (!rollFinishedAnimation || !roll5Result) {
-                    // If animation finished but network hasn't returned yet, continue slow spin
                     if (rollFinishedAnimation && !roll5Result) {
                         if (items.length > 0) {
                             const randItem = items[Math.floor(Math.random() * items.length)];
@@ -1786,31 +1949,33 @@
 
                 if (revealTimeout) return;
 
-                // Show result
                 if (roll5Result.success) {
-                    // Highlight the guaranteed avatar or highest value item in the rolling box
                     const guaranteedAvatarRoll = roll5Result.rolls.find(r => r.item.type === 'Avatar');
                     const displayItem = guaranteedAvatarRoll ? guaranteedAvatarRoll.item : roll5Result.rolls[0].item;
 
                     rollAvatarEl.src = displayItem.imageUrl || 'https://via.placeholder.com/150';
                     rollNameEl.innerText = displayItem.name + " (AND MORE!)";
-                    rollAvatarEl.style.transform = 'scale(1.1)'; // Slight pop
+                    rollAvatarEl.style.transform = 'scale(1.1)';
 
                     revealTimeout = setTimeout(() => {
                         document.getElementById('gacha-roll-animation').classList.add('hidden');
 
-                        // Render 5 items grid in reveal box
                         const multiContainer = document.getElementById('multi-reveal-content');
                         multiContainer.innerHTML = "";
 
                         roll5Result.rolls.forEach(r => {
-                            const dupBadge = r.isDuplicate ? `<div style="font-size:10px; color:#ff3333; font-weight:bold; margin-top:4px;">DUP (+${r.refundedGems}💎)</div>` : '';
+                            const dupBadge = r.isDuplicate ? `<div style="font-size:10px; color:#ff3333; font-weight:bold; margin-top:4px;">DUPLICATE (+${r.refundedGems} GEMS)</div>` : '';
+                            const rarityClass = 'rarity-' + (r.item.rarity || 'n').toLowerCase();
+                            // FIX: Cache-busting for grid images
+                            const gridImgUrl = (r.item.imageUrl || 'https://via.placeholder.com/80') + '?t=' + Date.now();
+
                             multiContainer.innerHTML += `
                                 <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding:12px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:8px;">
-                                    <div class="avatar-container" style="width:80px; height:80px; border-color:${r.item.type === 'Avatar' ? '#00FF87' : '#00E5FF'}; margin-bottom:8px;">
-                                        <img src="${r.item.imageUrl || 'https://via.placeholder.com/80'}" style="width:100%; height:100%; object-fit:cover;">
+                                    <div class="avatar-container ${rarityClass}" style="width:80px; height:80px; margin-bottom:8px;">
+                                        <img src="${gridImgUrl}" style="width:100%; height:100%; object-fit:cover;">
                                     </div>
                                     <div style="font-size:12px; font-weight:bold; color:#fff; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width:100%; margin-bottom:2px;" title="${r.item.name}">${r.item.name}</div>
+                                    <img src="${rarityStars[(r.item.rarity || 'N').toUpperCase()]}" style="height: 12px; margin-bottom: 4px;" alt="stars">
                                     <div style="font-size:10px; color:#888;">${r.item.type}</div>
                                     ${dupBadge}
                                 </div>
@@ -1833,7 +1998,6 @@
             }
         }
 
-        // Banner Details
         function openBannerDetail(bannerId, bannerName) {
             const trimmedId = (bannerId || '').trim();
             const items = cachedBannerItems[trimmedId] || [];
@@ -1843,8 +2007,15 @@
             if (items.length === 0) {
                 content.innerHTML = '<p style="color:#888;">NO ITEMS IN THIS BANNER.</p>';
             } else {
-                // Sort by drop rate descending
-                const sorted = [...items].sort((a, b) => b.dropRate - a.dropRate);
+                const rarityOrder = { 'UR': 0, 'SSR': 1, 'SR': 2, 'R': 3, 'N': 4 };
+                const sorted = [...items].sort((a, b) => {
+                    const orderA = rarityOrder[a.rarity] !== undefined ? rarityOrder[a.rarity] : 99;
+                    const orderB = rarityOrder[b.rarity] !== undefined ? rarityOrder[b.rarity] : 99;
+                    if (orderA !== orderB) {
+                        return orderA - orderB;
+                    }
+                    return b.dropRate - a.dropRate;
+                });
                 const maxRate = Math.max(...sorted.map(i => i.dropRate));
 
                 let html = `<table class="banner-detail-table">
@@ -1853,9 +2024,16 @@
                     const formattedRate = Number(item.dropRate).toFixed(2);
                     const pct = (maxRate > 0) ? (item.dropRate / maxRate * 100) : 0;
                     const imgSrc = item.imageUrl || 'https://via.placeholder.com/36';
+                    const rarityClass = 'rarity-' + (item.rarity || 'n').toLowerCase();
                     html += `<tr>
-                        <td><img class="item-thumb" src="${imgSrc}" alt="${item.name}"><span style="font-weight:bold;">${item.name}</span></td>
-                        <td style="color:#888;">${item.type}</td>
+                        <td>
+                            <img class="item-thumb ${rarityClass}" src="${imgSrc}" alt="${item.name}">
+                            <div style="display:inline-block; vertical-align:middle;">
+                                <div style="font-weight:bold;">${item.name}</div>
+                                <img src="${rarityStars[item.rarity || 'N']}" style="height:12px; display:block; margin-top:2px;" alt="stars">
+                            </div>
+                        </td>
+                        <td style="color:#888; vertical-align:middle;">${item.type}</td>
                         <td style="text-align:right;">
                             <span style="color:#00E5FF; font-weight:bold;">${formattedRate}%</span>
                             <div class="rate-bar"><div class="rate-fill" style="width:${pct}%"></div></div>
@@ -1876,11 +2054,9 @@
 
         function closeGachaReveal() {
             document.getElementById('gacha-roll-overlay').classList.add('hidden');
-            // Background refresh (no spinner)
             loadStudentPortal();
         }
 
-        // Logout
         function logout() {
             const cacheKey = 'portal_cache_' + currentStudentId;
             localStorage.removeItem(cacheKey);
@@ -1892,8 +2068,8 @@
             showLogin();
         }
 
-        // Custom Item Tooltip (hover + touch)
-        (function() {
+        // Custom Item Tooltip
+        (function () {
             const tooltip = document.getElementById('item-tooltip');
             const tooltipName = document.getElementById('tooltip-name');
             const tooltipDesc = document.getElementById('tooltip-desc');
@@ -1908,7 +2084,6 @@
 
                 tooltip.classList.add('visible');
 
-                // Position near cursor/touch, keep within viewport
                 const tw = tooltip.offsetWidth || 240;
                 const th = tooltip.offsetHeight || 60;
                 const vw = window.innerWidth;
@@ -1926,22 +2101,20 @@
                 tooltip.classList.remove('visible');
             }
 
-            // Mouse events for desktop
-            document.addEventListener('mouseover', function(e) {
+            document.addEventListener('mouseover', function (e) {
                 const card = e.target.closest('.item-card[data-desc]');
                 if (card) showTooltip(card, e.clientX, e.clientY);
             });
-            document.addEventListener('mousemove', function(e) {
+            document.addEventListener('mousemove', function (e) {
                 const card = e.target.closest('.item-card[data-desc]');
                 if (card) showTooltip(card, e.clientX, e.clientY);
                 else hideTooltip();
             });
-            document.addEventListener('mouseout', function(e) {
+            document.addEventListener('mouseout', function (e) {
                 if (!e.target.closest('.item-card[data-desc]')) hideTooltip();
             });
 
-            // Touch events for mobile
-            document.addEventListener('touchstart', function(e) {
+            document.addEventListener('touchstart', function (e) {
                 const card = e.target.closest('.item-card[data-desc]');
                 if (card) {
                     const touch = e.touches[0];
