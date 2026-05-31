@@ -10,9 +10,7 @@
         body {
             font-family: 'Oswald', sans-serif;
             background-color: #141414;
-            background-image:
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
             background-size: 100px 100%, 20px 100%;
             color: #f0f0f0;
             margin: 0;
@@ -131,7 +129,6 @@
             margin-top: 5px;
         }
 
-        /* Tabs */
         .nav-tabs {
             display: flex;
             gap: 20px;
@@ -200,7 +197,6 @@
             min-width: 320px;
         }
 
-        /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -226,50 +222,22 @@
             background-color: rgba(255, 255, 255, 0.03);
         }
 
-        /* Avatar styling */
         .avatar-container {
             width: 120px;
             height: 120px;
-            border-radius: 50%;
-            border: 3px solid #ffffff;
-            overflow: hidden;
-            background: #222;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            background: transparent;
             margin: 0 auto 15px;
             box-sizing: border-box;
-        }
-
-        .avatar-container.rarity-n {
-            border-color: #ffffff !important;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3) !important;
-        }
-
-        .avatar-container.rarity-r {
-            border-color: #888888 !important;
-            box-shadow: 0 0 15px rgba(136, 136, 136, 0.3) !important;
-        }
-
-        .avatar-container.rarity-sr {
-            border-color: #00E5FF !important;
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.3) !important;
-        }
-
-        .avatar-container.rarity-ssr {
-            border-color: #A855F7 !important;
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.3) !important;
-        }
-
-        .avatar-container.rarity-ur {
-            border: 3px solid transparent !important;
-            background: linear-gradient(#222, #222) padding-box,
-                linear-gradient(45deg, #ff007f, #ff00ff, #7f00ff, #0000ff, #007fff, #00ffff, #00ff7f, #00ff00, #7fff00, #ffff00, #ff7f00, #ff0000) border-box !important;
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5) !important;
+            border: none;
+            box-shadow: none;
         }
 
         .avatar-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border: none;
+            background: transparent;
         }
 
         .profile-header {
@@ -279,7 +247,6 @@
             margin-bottom: 20px;
         }
 
-        /* Gacha Banners */
         .gacha-banner-card {
             border: 1px solid rgba(255, 255, 255, 0.1);
             background: linear-gradient(135deg, rgba(20, 20, 20, 0.8) 0%, rgba(40, 40, 40, 0.8) 100%);
@@ -316,7 +283,6 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Item Grids */
         .items-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -339,66 +305,20 @@
             width: 70px;
             height: 70px;
             object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid #555;
-            background: #222;
+            background: transparent;
+            border: none;
             margin-bottom: 8px;
-        }
-
-        .item-card.rarity-n img {
-            border-color: #ffffff !important;
-        }
-
-        .item-card.rarity-r img {
-            border-color: #888888 !important;
-        }
-
-        .item-card.rarity-sr img {
-            border-color: #00E5FF !important;
-        }
-
-        .item-card.rarity-ssr img {
-            border-color: #A855F7 !important;
-        }
-
-        .item-card.rarity-ur img {
-            border: 2px solid transparent !important;
-            background: linear-gradient(#222, #222) padding-box,
-                linear-gradient(45deg, #ff007f, #ff00ff, #7f00ff, #0000ff, #007fff, #00ffff, #00ff7f, #00ff00, #7fff00, #ffff00, #ff7f00, #ff0000) border-box !important;
         }
 
         .item-thumb {
             width: 36px;
             height: 36px;
-            border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #555;
+            border: none;
             vertical-align: middle;
             margin-right: 10px;
-            background: #222;
+            background: transparent;
             box-sizing: border-box;
-        }
-
-        .item-thumb.rarity-n {
-            border-color: #ffffff !important;
-        }
-
-        .item-thumb.rarity-r {
-            border-color: #888888 !important;
-        }
-
-        .item-thumb.rarity-sr {
-            border-color: #00E5FF !important;
-        }
-
-        .item-thumb.rarity-ssr {
-            border-color: #A855F7 !important;
-        }
-
-        .item-thumb.rarity-ur {
-            border: 2px solid transparent !important;
-            background: linear-gradient(#222, #222) padding-box,
-                linear-gradient(45deg, #ff007f, #ff00ff, #7f00ff, #0000ff, #007fff, #00ffff, #00ff7f, #00ff00, #7fff00, #ffff00, #ff7f00, #ff0000) border-box !important;
         }
 
         .item-card.active-avatar {
@@ -408,7 +328,7 @@
         }
 
         .item-card.active-avatar img {
-            border-color: #00E5FF;
+            border: none;
         }
 
         .item-card:hover {
@@ -428,7 +348,6 @@
             font-weight: bold;
         }
 
-        /* Custom Item Tooltip */
         #item-tooltip {
             position: fixed;
             z-index: 99999;
@@ -462,7 +381,6 @@
             margin-bottom: 4px;
         }
 
-        /* Spinner */
         .spinner-overlay {
             position: fixed;
             top: 0;
@@ -496,46 +414,11 @@
             }
         }
 
-        /* Gacha Roll Animation */
-        .roll-animation-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .roll-ball {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #00E5FF 0%, #00FF87 100%);
-            box-shadow: 0 0 30px rgba(0, 229, 255, 0.6), 0 0 60px rgba(0, 229, 255, 0.3);
-        }
-
-        .roll-ball.spinning {
-            animation: spin 0.5s linear infinite, pulse 1s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1) rotate(0deg);
-                box-shadow: 0 0 30px rgba(0, 229, 255, 0.6);
-            }
-
-            50% {
-                transform: scale(1.15) rotate(180deg);
-                box-shadow: 0 0 50px rgba(0, 229, 255, 0.9);
-            }
-        }
-
         .gacha-item-reveal {
             text-align: center;
             animation: fadeIn 0.5s ease-in-out;
         }
 
-        /* Login Panel Styling */
         .login-container {
             max-width: 420px;
             margin: 80px auto 0;
@@ -553,7 +436,6 @@
             margin-bottom: 30px;
         }
 
-        /* Change Password Modal */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -576,7 +458,6 @@
             width: 90%;
         }
 
-        /* Avatar Edit Button */
         .avatar-wrapper {
             position: relative;
             display: inline-block;
@@ -608,7 +489,6 @@
             box-shadow: 0 4px 12px rgba(0, 229, 255, 0.6);
         }
 
-        /* Avatar Picker Modal */
         .avatar-picker-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
@@ -629,7 +509,7 @@
 
         .avatar-pick-item {
             background: rgba(255, 255, 255, 0.03);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            border: none;
             border-radius: 8px;
             padding: 10px;
             text-align: center;
@@ -639,47 +519,20 @@
 
         .avatar-pick-item:hover {
             background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
         }
 
         .avatar-pick-item.equipped {
             background: rgba(0, 229, 255, 0.1);
             box-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
-        }
-
-        .avatar-pick-item.rarity-n {
-            border-color: #ffffff !important;
-        }
-
-        .avatar-pick-item.rarity-r {
-            border-color: #888888 !important;
-        }
-
-        .avatar-pick-item.rarity-sr {
-            border-color: #00E5FF !important;
-        }
-
-        .avatar-pick-item.rarity-ssr {
-            border-color: #A855F7 !important;
-        }
-
-        .avatar-pick-item.rarity-ur {
-            border: 2px solid transparent !important;
-            background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
-                linear-gradient(45deg, #ff007f, #ff00ff, #7f00ff, #0000ff, #007fff, #00ffff, #00ff7f, #00ff00, #7fff00, #ffff00, #ff7f00, #ff0000) border-box !important;
+            border: none;
         }
 
         .avatar-pick-item img {
             width: 60px;
             height: 60px;
-            border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #444;
-        }
-
-        .avatar-pick-item.equipped img {
-            border-color: #00E5FF;
+            border: none;
         }
 
         .avatar-pick-item .pick-name {
@@ -699,7 +552,6 @@
             flex-shrink: 0;
         }
 
-        /* Custom Alert/Confirm Modal */
         .msg-modal-box {
             background: #1a1a1a;
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -731,7 +583,6 @@
             flex: 1;
         }
 
-        /* Duplicate refund text */
         .refund-text {
             color: #FFD700;
             font-size: 14px;
@@ -739,7 +590,6 @@
             margin-top: 8px;
         }
 
-        /* Banner Details Modal */
         .banner-detail-table {
             width: 100%;
             border-collapse: collapse;
@@ -773,16 +623,6 @@
             border-radius: 3px;
         }
 
-        .banner-detail-table .item-thumb {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #444;
-            vertical-align: middle;
-            margin-right: 8px;
-        }
-
         #banner-detail-content {
             max-height: 55vh;
             overflow-y: auto;
@@ -798,7 +638,85 @@
             border-radius: 3px;
         }
 
-        /* Mobile optimization */
+        /* 🎁 Gift Box Animation Styles */
+        .gift-box-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            min-height: 380px;
+        }
+
+        .gift-box {
+            width: 300px;
+            max-width: 90vw;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .gift-box.shaking {
+            animation: giftShake 0.15s ease-in-out infinite;
+        }
+
+        .gift-box:active {
+            transform: scale(0.98);
+        }
+
+        @keyframes giftShake {
+
+            0%,
+            100% {
+                transform: translateX(0) rotate(0deg);
+            }
+
+            25% {
+                transform: translateX(-3px) rotate(-1deg);
+            }
+
+            50% {
+                transform: translateX(3px) rotate(1deg);
+            }
+
+            75% {
+                transform: translateX(-2px) rotate(-0.5deg);
+            }
+        }
+
+        .gift-box-hint {
+            margin-top: 15px;
+            color: #aaa;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: pulseHint 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseHint {
+
+            0%,
+            100% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .gift-processing {
+            color: #00E5FF;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            animation: pulseHint 1.5s ease-in-out infinite;
+        }
+
         @media (max-width: 600px) {
             body {
                 padding: 10px;
@@ -850,34 +768,14 @@
                 padding: 8px 6px;
             }
 
-            .banner-detail-table .item-thumb {
-                width: 28px;
-                height: 28px;
-                margin-right: 4px;
+            .gift-box {
+                width: 280px;
             }
-
-            img[alt="stars"] {
-                max-height: 14px !important;
-            }
-        }
-
-        img[alt="stars"] {
-            height: 16px !important;
-            width: auto !important;
-            max-width: 100% !important;
-            border-radius: 0 !important;
-            border: none !important;
-            box-shadow: none !important;
-            background: transparent !important;
-            object-fit: contain !important;
-            display: inline-block !important;
         }
     </style>
 </head>
 
 <body>
-
-    <!-- SVG Icon Sprites -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
         <symbol id="icon-grad" viewBox="0 0 24 24">
             <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
@@ -932,27 +830,17 @@
         </symbol>
     </svg>
 
-    <!-- ============ LOGIN PANEL ============ -->
     <div id="login-panel" class="container login-container">
         <h1><svg class="icon">
                 <use href="#icon-grad" />
             </svg> STUDENT PORTAL</h1>
         <p class="subtitle">BASIC ENGLISH — ASSUMPTION COLLEGE SRIRACHA</p>
-
-        <div class="input-group">
-            <label for="login-id">STUDENT ID</label>
-            <input type="text" id="login-id" placeholder="e.g. 12345">
-        </div>
-
-        <!-- Password for returning students -->
+        <div class="input-group"><label for="login-id">STUDENT ID</label><input type="text" id="login-id"
+                placeholder="e.g. 12345"></div>
         <div class="id-registered hidden">
-            <div class="input-group">
-                <label for="login-pass">PASSWORD</label>
-                <input type="password" id="login-pass" placeholder="Enter your password">
-            </div>
+            <div class="input-group"><label for="login-pass">PASSWORD</label><input type="password" id="login-pass"
+                    placeholder="Enter your password"></div>
         </div>
-
-        <!-- First-time password creation -->
         <div class="id-first-time hidden">
             <div
                 style="background: rgba(0, 229, 255, 0.05); border: 1px solid rgba(0, 229, 255, 0.2); padding: 15px; margin-bottom: 15px;">
@@ -961,25 +849,17 @@
                     </svg> FIRST-TIME LOGIN</p>
                 <p style="color: #aaa; margin: 0; font-size: 13px;">CREATE A PASSWORD TO SECURE YOUR ACCOUNT.</p>
             </div>
-            <div class="input-group">
-                <label for="create-pass">CREATE PASSWORD</label>
-                <input type="password" id="create-pass" placeholder="Choose a password">
-            </div>
-            <div class="input-group">
-                <label for="confirm-pass">CONFIRM PASSWORD</label>
-                <input type="password" id="confirm-pass" placeholder="Confirm your password">
-            </div>
+            <div class="input-group"><label for="create-pass">CREATE PASSWORD</label><input type="password"
+                    id="create-pass" placeholder="Choose a password"></div>
+            <div class="input-group"><label for="confirm-pass">CONFIRM PASSWORD</label><input type="password"
+                    id="confirm-pass" placeholder="Confirm your password"></div>
         </div>
-
         <p id="login-error" class="error-text"></p>
-
         <button id="btn-login" onclick="handleLoginSubmit()" class="primary-btn"
             style="width: 100%; margin-top: 10px;">CONTINUE</button>
     </div>
 
-    <!-- ============ MAIN DASHBOARD ============ -->
     <div id="main-panel" class="container hidden">
-        <!-- Nav Tabs -->
         <div class="nav-tabs">
             <button class="active-tab" onclick="switchTab('dashboard-tab', this)"><svg class="icon">
                     <use href="#icon-chart" />
@@ -999,19 +879,14 @@
             <button onclick="logout()" style="margin-left:auto; color:#ff5555; border-bottom-color:transparent;"><svg
                     class="icon">
                     <use href="#icon-exit" />
-                </svg>
-                LOGOUT</button>
+                </svg> LOGOUT</button>
         </div>
-
-        <!-- DASHBOARD TAB -->
         <div id="dashboard-tab" class="tab-content">
             <div class="flex-panel">
                 <div class="panel flex-1">
                     <div class="profile-header">
                         <div class="avatar-wrapper">
-                            <div class="avatar-container">
-                                <img id="profile-avatar-img" src="" alt="Avatar">
-                            </div>
+                            <div class="avatar-container"><img id="profile-avatar-img" src="" alt="Avatar"></div>
                             <button class="avatar-edit-btn" onclick="openAvatarPicker()" title="Change Avatar"><svg
                                     class="icon">
                                     <use href="#icon-edit" />
@@ -1022,28 +897,20 @@
                                 style="color: #00E5FF;">—</span></p>
                     </div>
                     <div style="display: flex; justify-content: space-around; text-align: center;">
-                        <div>
-                            <span style="font-size: 14px; color: #a0a0a0; display:block;">CLASS</span>
-                            <span id="profile-class" style="font-size: 20px; font-weight: bold;">—</span>
-                        </div>
-                        <div>
-                            <span style="font-size: 14px; color: #a0a0a0; display:block;">NO.</span>
-                            <span id="profile-no" style="font-size: 20px; font-weight: bold;">—</span>
-                        </div>
-                        <div>
-                            <span style="font-size: 14px; color: #a0a0a0; display:block;">TOTAL GEMS</span>
-                            <span id="profile-gems"
+                        <div><span style="font-size: 14px; color: #a0a0a0; display:block;">CLASS</span><span
+                                id="profile-class" style="font-size: 20px; font-weight: bold;">—</span></div>
+                        <div><span style="font-size: 14px; color: #a0a0a0; display:block;">NO.</span><span
+                                id="profile-no" style="font-size: 20px; font-weight: bold;">—</span></div>
+                        <div><span style="font-size: 14px; color: #a0a0a0; display:block;">TOTAL GEMS</span><span
+                                id="profile-gems"
                                 style="font-size: 32px; color: #00E5FF; font-weight: bold; text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);">0</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- ASSIGNMENTS TAB -->
         <div id="assignments-tab" class="tab-content hidden">
             <div class="flex-panel">
-                <!-- Submitted List -->
                 <div class="panel flex-1">
                     <h3 style="color:#00FF87;"><svg class="icon">
                             <use href="#icon-check" />
@@ -1056,12 +923,9 @@
                                 <th style="width: 100px; text-align: center; color: #00FF87;">YOUR SCORE</th>
                             </tr>
                         </thead>
-                        <tbody id="submitted-list-body">
-                        </tbody>
+                        <tbody id="submitted-list-body"></tbody>
                     </table>
                 </div>
-
-                <!-- Unsubmitted List -->
                 <div class="panel flex-1">
                     <h3 style="color:#ff3333;"><svg class="icon">
                             <use href="#icon-cross" />
@@ -1074,14 +938,11 @@
                                 <th style="width: 100px; text-align: center; color:#ff3333;">MAX SCORE</th>
                             </tr>
                         </thead>
-                        <tbody id="unsubmitted-list-body">
-                        </tbody>
+                        <tbody id="unsubmitted-list-body"></tbody>
                     </table>
                 </div>
             </div>
         </div>
-
-        <!-- MATERIALS TAB -->
         <div id="materials-tab" class="tab-content hidden">
             <div class="panel">
                 <h3 style="color:#00E5FF;"><svg class="icon">
@@ -1094,13 +955,10 @@
                             <th style="width: 150px; text-align: center;">LINK</th>
                         </tr>
                     </thead>
-                    <tbody id="materials-list-body">
-                    </tbody>
+                    <tbody id="materials-list-body"></tbody>
                 </table>
             </div>
         </div>
-
-        <!-- GACHAPON TAB -->
         <div id="gacha-tab" class="tab-content hidden">
             <div class="panel">
                 <div
@@ -1108,88 +966,65 @@
                     <h3 class="text-accent" style="margin: 0;"><svg class="icon">
                             <use href="#icon-dice" />
                         </svg> CHOOSE A BANNER</h3>
-                    <div style="font-size: 16px; font-weight: bold; color: #a0a0a0;">
-                        YOUR GEMS: <span class="gacha-tab-gems" style="color: #00E5FF; font-size: 20px;">0</span>
-                    </div>
+                    <div style="font-size: 16px; font-weight: bold; color: #a0a0a0;">YOUR GEMS: <span
+                            class="gacha-tab-gems" style="color: #00E5FF; font-size: 20px;">0</span></div>
                 </div>
                 <div id="gacha-banners-list"
                     style="display:grid; grid-template-columns: 1fr; max-width: 560px; margin: 15px auto 0; gap:20px;">
                 </div>
             </div>
         </div>
-
-        <!-- INVENTORY TAB -->
         <div id="inventory-tab" class="tab-content hidden">
             <div class="panel">
                 <h3 class="text-accent"><svg class="icon">
                         <use href="#icon-bag" />
                     </svg> REAL-LIFE ITEMS</h3>
-                <div id="real-inventory-grid" class="items-grid">
-                </div>
+                <div id="real-inventory-grid" class="items-grid"></div>
             </div>
         </div>
     </div>
 
-    <!-- SPINNER OVERLAY -->
     <div id="loading-spinner" class="spinner-overlay hidden">
         <div class="spinner"></div>
         <p style="margin-top:20px; font-weight:bold; letter-spacing:2px;">PROCESSING...</p>
     </div>
-
-    <!-- Custom Item Description Tooltip -->
     <div id="item-tooltip">
         <div class="tooltip-name" id="tooltip-name"></div>
         <div id="tooltip-desc"></div>
     </div>
 
-    <!-- GACHA ROLL SPINNER MODAL -->
+    <!-- 🎁 NEW GIFT BOX GACHA OVERLAY -->
     <div id="gacha-roll-overlay" class="spinner-overlay hidden">
-        <!-- Spinning animation -->
-        <div id="gacha-roll-animation" class="roll-animation-box"
-            style="background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); padding: 30px; max-width: 320px; width: 90%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <!-- FIX: Added ID for JS targeting, default rarity-n class, and transition:none override -->
-            <div id="gacha-roll-avatar-container" class="avatar-container rarity-n"
-                style="width: 150px; height: 150px; border: 4px solid #00E5FF; border-radius: 50%; overflow: hidden; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); transition: none !important;">
-                <img id="gacha-roll-avatar" src="https://i.postimg.cc/FK5XzhGZ/logo-ACS.png"
-                    style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.1s ease-in-out;">
-            </div>
-            <h3 id="gacha-roll-name" style="margin: 0; font-size: 20px; color: #fff; text-transform: uppercase;">
-                ROLLING...</h3>
+        <div id="gift-box-container" class="gift-box-container">
+            <!-- Processing message shown first -->
+            <p id="gift-processing" class="gift-processing">PROCESSING...</p>
+            <!-- Gift box shown after server response -->
+            <img id="gift-box-img" class="gift-box hidden" src="" alt="Gift Box">
+            <p id="gift-box-hint" class="gift-box-hint hidden">TAP TO OPEN</p>
         </div>
 
-        <!-- Drop reveal -->
+        <!-- Results reveal (hidden initially) -->
         <div id="gacha-reveal-box" class="gacha-item-reveal hidden" style="max-width: 720px; width: 90%;">
             <h2
                 style="color: #00E5FF; font-size: 28px; text-shadow: 0 0 10px rgba(0, 229, 255, 0.4); margin-bottom: 15px;">
                 <svg class="icon">
                     <use href="#icon-star" />
-                </svg>
-                CONGRATULATIONS!
-            </h2>
-
-            <!-- Single roll reveal -->
+                </svg> CONGRATULATIONS!</h2>
             <div id="single-reveal-content"
                 style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-                <div class="avatar-container" style="width: 140px; height: 140px;">
-                    <img id="reveal-item-img" src="" alt="Dropped Item">
-                </div>
+                <div class="avatar-container" style="width: 140px; height: 140px;"><img id="reveal-item-img" src=""
+                        alt="Dropped Item"></div>
                 <h3 id="reveal-item-name" style="color: #fff; margin-bottom: 5px; text-align: center;">ITEM NAME</h3>
-                <img id="reveal-item-stars" src="" style="height: 18px; margin-bottom: 10px; display: block;"
-                    alt="stars">
                 <p id="reveal-duplicate-text" class="refund-text hidden"></p>
             </div>
-
-            <!-- Multi roll (5x) reveal grid -->
             <div id="multi-reveal-content" class="hidden"
                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 15px; width: 100%; margin-bottom: 15px; max-height: 380px; overflow-y: auto; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
             </div>
-
             <button onclick="closeGachaReveal()" class="primary-btn"
                 style="margin-top: 15px; width: 100%;">AWESOME!</button>
         </div>
     </div>
 
-    <!-- AVATAR PICKER MODAL -->
     <div id="avatar-picker-modal" class="modal-overlay hidden" onclick="closeAvatarPicker(event)">
         <div class="modal-box" style="max-width: 480px;" onclick="event.stopPropagation()">
             <h3 style="color: #00E5FF; margin-bottom: 15px;"><svg class="icon">
@@ -1199,49 +1034,31 @@
             <button onclick="closeAvatarPicker()" style="width: 100%; margin-top: 15px;">CLOSE</button>
         </div>
     </div>
-
-    <!-- GENERIC ALERT MODAL -->
     <div id="alert-modal" class="modal-overlay hidden" style="z-index: 10000;">
         <div class="msg-modal-box">
             <h3 id="alert-modal-title" style="color: #00E5FF;">NOTICE</h3>
-            <p id="alert-modal-msg"></p>
-            <button id="alert-modal-btn" class="primary-btn" style="width: 100%;">OK</button>
+            <p id="alert-modal-msg"></p><button id="alert-modal-btn" class="primary-btn"
+                style="width: 100%;">OK</button>
         </div>
     </div>
-
-    <!-- GENERIC CONFIRM MODAL -->
     <div id="confirm-modal" class="modal-overlay hidden" style="z-index: 10000;">
         <div class="msg-modal-box">
             <h3 id="confirm-modal-title" style="color: #00E5FF;">CONFIRM</h3>
             <p id="confirm-modal-msg"></p>
-            <div class="modal-btns">
-                <button id="confirm-modal-no">CANCEL</button>
-                <button id="confirm-modal-yes" class="primary-btn">YES</button>
-            </div>
+            <div class="modal-btns"><button id="confirm-modal-no">CANCEL</button><button id="confirm-modal-yes"
+                    class="primary-btn">YES</button></div>
         </div>
     </div>
-
-    <!-- BANNER DETAILS MODAL -->
     <div id="banner-detail-modal" class="modal-overlay hidden" onclick="closeBannerDetail(event)">
         <div class="modal-box" style="max-width: 500px;" onclick="event.stopPropagation()">
             <h3 id="banner-detail-title" style="color: #00E5FF; margin-bottom: 15px;">BANNER ITEMS</h3>
-            <div id="banner-detail-content"></div>
-            <button onclick="closeBannerDetail()" style="width: 100%; margin-top: 15px;">CLOSE</button>
+            <div id="banner-detail-content"></div><button onclick="closeBannerDetail()"
+                style="width: 100%; margin-top: 15px;">CLOSE</button>
         </div>
     </div>
 
-    <!-- JS LOGIC -->
     <script>
-        // SHA-256 Hash algorithm
-        async function sha256(message) {
-            const msgBuffer = new TextEncoder().encode(message);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-            return hashHex;
-        }
-
-        // Global states
+        async function sha256(message) { const msgBuffer = new TextEncoder().encode(message); const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer); return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join(''); }
         const apiWebUrl = "https://script.google.com/macros/s/AKfycby7LqVeHPwa_JoQwhHD2DLttyeBjz8z2Wl2sM0cEIbiRgIEBLa7FqXiSFj6qva1Xl2r/exec";
         let currentStudentId = localStorage.getItem('student_id') || "";
         let currentPasswordHash = localStorage.getItem('student_pass_hash') || "";
@@ -1251,881 +1068,204 @@
         let cachedPortalData = null;
         let cachedBannerItems = {};
 
-        const rarityStars = {
-            'N': 'https://i.postimg.cc/0jgjJ5Fj/1star.png',
-            'R': 'https://i.postimg.cc/Gt0ts3V9/2star.png',
-            'SR': 'https://i.postimg.cc/PJGJ8f9P/3star.png',
-            'SSR': 'https://i.postimg.cc/C5y5fMXR/4star.png',
-            'UR': 'https://i.postimg.cc/d3M3TQp7/5star.png'
-        };
+        function showModal(msg, title) { document.getElementById('alert-modal-title').innerText = title || 'NOTICE'; document.getElementById('alert-modal-msg').innerText = msg; document.getElementById('alert-modal').classList.remove('hidden'); return new Promise(resolve => { document.getElementById('alert-modal-btn').onclick = () => { document.getElementById('alert-modal').classList.add('hidden'); resolve(); }; }); }
+        function showConfirm(msg, title) { document.getElementById('confirm-modal-title').innerText = title || 'CONFIRM'; document.getElementById('confirm-modal-msg').innerText = msg; document.getElementById('confirm-modal').classList.remove('hidden'); return new Promise(resolve => { document.getElementById('confirm-modal-yes').onclick = () => { document.getElementById('confirm-modal').classList.add('hidden'); resolve(true); }; document.getElementById('confirm-modal-no').onclick = () => { document.getElementById('confirm-modal').classList.add('hidden'); resolve(false); }; }); }
+        document.addEventListener('DOMContentLoaded', () => { currentStudentId && currentPasswordHash ? loadStudentPortal() : showLogin(); });
 
-        // Modal helpers
-        function showModal(msg, title) {
-            document.getElementById('alert-modal-title').innerText = title || 'NOTICE';
-            document.getElementById('alert-modal-msg').innerText = msg;
-            document.getElementById('alert-modal').classList.remove('hidden');
-            return new Promise(resolve => {
-                document.getElementById('alert-modal-btn').onclick = () => {
-                    document.getElementById('alert-modal').classList.add('hidden');
-                    resolve();
-                };
-            });
-        }
-
-        function showConfirm(msg, title) {
-            document.getElementById('confirm-modal-title').innerText = title || 'CONFIRM';
-            document.getElementById('confirm-modal-msg').innerText = msg;
-            document.getElementById('confirm-modal').classList.remove('hidden');
-            return new Promise(resolve => {
-                document.getElementById('confirm-modal-yes').onclick = () => {
-                    document.getElementById('confirm-modal').classList.add('hidden');
-                    resolve(true);
-                };
-                document.getElementById('confirm-modal-no').onclick = () => {
-                    document.getElementById('confirm-modal').classList.add('hidden');
-                    resolve(false);
-                };
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            if (currentStudentId && currentPasswordHash) {
-                loadStudentPortal();
-            } else {
-                showLogin();
-            }
-        });
-
-        // Login management
-        function showLogin() {
-            document.getElementById('login-panel').classList.remove('hidden');
-            document.getElementById('main-panel').classList.add('hidden');
-            document.getElementById('login-error').innerText = "";
-            isFirstTimeState = false;
-            document.querySelector('.id-registered').classList.add('hidden');
-            document.querySelector('.id-first-time').classList.add('hidden');
-            document.getElementById('login-id').disabled = false;
-            document.getElementById('btn-login').innerText = "CONTINUE";
-        }
-
+        function showLogin() { document.getElementById('login-panel').classList.remove('hidden'); document.getElementById('main-panel').classList.add('hidden'); document.getElementById('login-error').innerText = ""; isFirstTimeState = false; document.querySelector('.id-registered').classList.add('hidden'); document.querySelector('.id-first-time').classList.add('hidden'); document.getElementById('login-id').disabled = false; document.getElementById('btn-login').innerText = "CONTINUE"; }
         async function handleLoginSubmit() {
-            const studentId = document.getElementById('login-id').value.trim();
-            const errorText = document.getElementById('login-error');
-            errorText.innerText = "";
-
-            if (!studentId) {
-                errorText.innerText = "PLEASE ENTER STUDENT ID.";
-                return;
-            }
-
-            const registeredVisible = !document.querySelector('.id-registered').classList.contains('hidden');
-            const firstTimeVisible = !document.querySelector('.id-first-time').classList.contains('hidden');
-
+            const studentId = document.getElementById('login-id').value.trim(); const errorText = document.getElementById('login-error'); errorText.innerText = "";
+            if (!studentId) { errorText.innerText = "PLEASE ENTER STUDENT ID."; return; }
+            const registeredVisible = !document.querySelector('.id-registered').classList.contains('hidden'); const firstTimeVisible = !document.querySelector('.id-first-time').classList.contains('hidden');
             if (!registeredVisible && !firstTimeVisible) {
-                toggleLoading(true);
-                try {
-                    const response = await fetch(`${apiWebUrl}?action=login&studentId=${studentId}`);
-                    const result = await response.json();
-                    toggleLoading(false);
-
-                    if (result.success === false) {
-                        errorText.innerText = result.error;
-                        return;
-                    }
-
-                    if (result.isFirstLogin) {
-                        isFirstTimeState = true;
-                        document.querySelector('.id-first-time').classList.remove('hidden');
-                        document.getElementById('btn-login').innerText = "REGISTER PASSWORD";
-                    } else {
-                        document.querySelector('.id-registered').classList.remove('hidden');
-                        document.getElementById('btn-login').innerText = "LOGIN";
-                    }
-                    document.getElementById('login-id').disabled = true;
-                } catch (e) {
-                    toggleLoading(false);
-                    errorText.innerText = "CONNECTION FAILED. TRY AGAIN LATER.";
-                }
-                return;
+                toggleLoading(true); try { const response = await fetch(`${apiWebUrl}?action=login&studentId=${studentId}`); const result = await response.json(); toggleLoading(false); if (result.success === false) { errorText.innerText = result.error; return; } if (result.isFirstLogin) { isFirstTimeState = true; document.querySelector('.id-first-time').classList.remove('hidden'); document.getElementById('btn-login').innerText = "REGISTER PASSWORD"; } else { document.querySelector('.id-registered').classList.remove('hidden'); document.getElementById('btn-login').innerText = "LOGIN"; } document.getElementById('login-id').disabled = true; } catch (e) { toggleLoading(false); errorText.innerText = "CONNECTION FAILED. TRY AGAIN LATER."; } return;
             }
-
             if (isFirstTimeState) {
-                const cPass = document.getElementById('create-pass').value;
-                const confPass = document.getElementById('confirm-pass').value;
-
-                if (!cPass || !confPass) {
-                    errorText.innerText = "ALL PASSWORD FIELDS ARE REQUIRED.";
-                    return;
-                }
-                if (cPass !== confPass) {
-                    errorText.innerText = "PASSWORD CONFIRMATION DOES NOT MATCH.";
-                    return;
-                }
-
-                toggleLoading(true);
-                const hashedPass = await sha256(cPass);
-                try {
-                    const response = await fetch(`${apiWebUrl}?action=setPassword&studentId=${studentId}&password=${hashedPass}`);
-                    const result = await response.json();
-                    toggleLoading(false);
-
-                    if (result.success) {
-                        await showModal('PASSWORD CREATED SUCCESSFULLY! PLEASE LOGIN.', 'SUCCESS');
-                        isFirstTimeState = false;
-                        document.getElementById('create-pass').value = "";
-                        document.getElementById('confirm-pass').value = "";
-                        showLogin();
-                    } else {
-                        errorText.innerText = result.error;
-                    }
-                } catch (e) {
-                    toggleLoading(false);
-                    errorText.innerText = "REGISTRATION FAILED.";
-                }
-                return;
+                const cPass = document.getElementById('create-pass').value; const confPass = document.getElementById('confirm-pass').value;
+                if (!cPass || !confPass) { errorText.innerText = "ALL PASSWORD FIELDS ARE REQUIRED."; return; }
+                if (cPass !== confPass) { errorText.innerText = "PASSWORD CONFIRMATION DOES NOT MATCH."; return; }
+                toggleLoading(true); const hashedPass = await sha256(cPass); try { const response = await fetch(`${apiWebUrl}?action=setPassword&studentId=${studentId}&password=${hashedPass}`); const result = await response.json(); toggleLoading(false); if (result.success) { await showModal('PASSWORD CREATED SUCCESSFULLY! PLEASE LOGIN.', 'SUCCESS'); isFirstTimeState = false; document.getElementById('create-pass').value = ""; document.getElementById('confirm-pass').value = ""; showLogin(); } else { errorText.innerText = result.error; } } catch (e) { toggleLoading(false); errorText.innerText = "REGISTRATION FAILED."; } return;
             }
-
-            const passVal = document.getElementById('login-pass').value;
-            if (!passVal) {
-                errorText.innerText = "PLEASE ENTER PASSWORD.";
-                return;
-            }
-
-            toggleLoading(true);
-            const passHash = await sha256(passVal);
-            try {
-                const response = await fetch(`${apiWebUrl}?action=login&studentId=${studentId}&password=${passHash}`);
-                const result = await response.json();
-                toggleLoading(false);
-
-                if (result.success) {
-                    currentStudentId = studentId;
-                    currentPasswordHash = passHash;
-                    localStorage.setItem('student_id', currentStudentId);
-                    localStorage.setItem('student_pass_hash', currentPasswordHash);
-
-                    document.getElementById('login-id').disabled = false;
-                    document.getElementById('login-id').value = "";
-                    document.getElementById('login-pass').value = "";
-                    loadStudentPortal();
-                } else {
-                    errorText.innerText = result.error;
-                }
-            } catch (e) {
-                toggleLoading(false);
-                errorText.innerText = "LOGIN FAILED.";
-            }
+            const passVal = document.getElementById('login-pass').value; if (!passVal) { errorText.innerText = "PLEASE ENTER PASSWORD."; return; }
+            toggleLoading(true); const passHash = await sha256(passVal); try { const response = await fetch(`${apiWebUrl}?action=login&studentId=${studentId}&password=${passHash}`); const result = await response.json(); toggleLoading(false); if (result.success) { currentStudentId = studentId; currentPasswordHash = passHash; localStorage.setItem('student_id', currentStudentId); localStorage.setItem('student_pass_hash', currentPasswordHash); document.getElementById('login-id').disabled = false; document.getElementById('login-id').value = ""; document.getElementById('login-pass').value = ""; loadStudentPortal(); } else { errorText.innerText = result.error; } } catch (e) { toggleLoading(false); errorText.innerText = "LOGIN FAILED."; }
         }
-
-        function toggleLoading(show) {
-            const spinner = document.getElementById('loading-spinner');
-            if (show) spinner.classList.remove('hidden');
-            else spinner.classList.add('hidden');
-        }
-
-        function switchTab(tabId, btnElement) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
-            document.getElementById(tabId).classList.remove('hidden');
-
-            if (btnElement) {
-                document.querySelectorAll('.nav-tabs button').forEach(btn => btn.classList.remove('active-tab'));
-                btnElement.classList.add('active-tab');
-            }
-        }
+        function toggleLoading(show) { const spinner = document.getElementById('loading-spinner'); if (show) spinner.classList.remove('hidden'); else spinner.classList.add('hidden'); }
+        function switchTab(tabId, btnElement) { document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden')); document.getElementById(tabId).classList.remove('hidden'); if (btnElement) { document.querySelectorAll('.nav-tabs button').forEach(btn => btn.classList.remove('active-tab')); btnElement.classList.add('active-tab'); } }
 
         function renderPortal(result) {
-            document.getElementById('profile-id').innerText = result.student.id;
-            document.getElementById('profile-name').innerText = result.student.name;
-            document.getElementById('profile-class').innerText = result.student.className;
-            document.getElementById('profile-no').innerText = result.student.classNo;
-            document.getElementById('profile-gems').innerText = result.student.gems;
-            document.querySelectorAll('.gacha-tab-gems').forEach(el => el.innerText = result.student.gems);
-
-            const avatarImg = document.getElementById('profile-avatar-img');
-            avatarImg.src = result.currentAvatarUrl || "https://api.dicebear.com/7.x/pixel-art/svg?seed=" + result.student.id;
-
-            const profileRarity = result.currentAvatarRarity || 'N';
-            const avatarContainer = avatarImg.closest('.avatar-container');
-            if (avatarContainer) {
-                avatarContainer.className = 'avatar-container rarity-' + profileRarity.toLowerCase();
-            }
-
-            const subBody = document.getElementById('submitted-list-body');
-            subBody.innerHTML = "";
-            if (result.submitted.length === 0) {
-                subBody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:#888;">NO SUBMISSIONS YET</td></tr>`;
-            } else {
-                result.submitted.forEach(item => {
-                    subBody.innerHTML += `
-                        <tr>
-                            <td>${item.name}</td>
-                            <td style="text-align:center;">${item.scorePeriod}</td>
-                            <td style="text-align:center; color: #00FF87; font-weight:bold;">${item.score} / ${item.maxScore} <span style="font-size:12px; color:#666;">(${item.weight}%)</span></td>
-                        </tr>
-                    `;
-                });
-            }
-
-            const unsubBody = document.getElementById('unsubmitted-list-body');
-            unsubBody.innerHTML = "";
-            if (result.unsubmitted.length === 0) {
-                unsubBody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:#888;">ALL ASSIGNMENTS TURNED IN!</td></tr>`;
-            } else {
-                result.unsubmitted.forEach(item => {
-                    unsubBody.innerHTML += `
-                        <tr>
-                            <td>${item.name}</td>
-                            <td style="text-align:center;">${item.scorePeriod}</td>
-                            <td style="text-align:center; color:#ff3333; font-weight:bold;">MAX: ${item.maxScore} <span style="font-size:12px; color:#666;">(${item.weight}%)</span></td>
-                        </tr>
-                    `;
-                });
-            }
-
+            document.getElementById('profile-id').innerText = result.student.id; document.getElementById('profile-name').innerText = result.student.name; document.getElementById('profile-class').innerText = result.student.className; document.getElementById('profile-no').innerText = result.student.classNo; document.getElementById('profile-gems').innerText = result.student.gems; document.querySelectorAll('.gacha-tab-gems').forEach(el => el.innerText = result.student.gems); document.getElementById('profile-avatar-img').src = result.currentAvatarUrl || "https://api.dicebear.com/7.x/pixel-art/svg?seed=" + result.student.id;
+            const subBody = document.getElementById('submitted-list-body'); subBody.innerHTML = "";
+            if (result.submitted.length === 0) { subBody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:#888;">NO SUBMISSIONS YET</td></tr>`; } else { result.submitted.forEach(item => { subBody.innerHTML += `<tr><td>${item.name}</td><td style="text-align:center;">${item.scorePeriod}</td><td style="text-align:center; color: #00FF87; font-weight:bold;">${item.score} / ${item.maxScore} <span style="font-size:12px; color:#666;">(${item.weight}%)</span></td></tr>`; }); }
+            const unsubBody = document.getElementById('unsubmitted-list-body'); unsubBody.innerHTML = "";
+            if (result.unsubmitted.length === 0) { unsubBody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:#888;">ALL ASSIGNMENTS TURNED IN!</td></tr>`; } else { result.unsubmitted.forEach(item => { unsubBody.innerHTML += `<tr><td>${item.name}</td><td style="text-align:center;">${item.scorePeriod}</td><td style="text-align:center; color:#ff3333; font-weight:bold;">MAX: ${item.maxScore} <span style="font-size:12px; color:#666;">(${item.weight}%)</span></td></tr>`; }); }
             cachedBannerItems = result.bannerItems || {};
-
-            const bannerContainer = document.getElementById('gacha-banners-list');
-            bannerContainer.innerHTML = "";
-            if (result.banners.length === 0) {
-                bannerContainer.innerHTML = `<p style="color:#888; text-align:center;">NO GACHAPON BANNERS ACTIVE RIGHT NOW.</p>`;
-            } else {
-                result.banners.forEach(b => {
-                    const bImg = b.imageUrl ? `<img class="banner-img" src="${b.imageUrl}" alt="${b.name}">` : '';
-                    bannerContainer.innerHTML += `
-                        <div class="gacha-banner-card">
-                            ${bImg}
-                            <h3 style="margin-bottom:10px;">${b.name}</h3>
-                            <p style="color:#00E5FF; font-size:18px; font-weight:bold; margin: 10px 0 15px;">${b.cost} GEMS PER ROLL</p>
-                            <button onclick="openBannerDetail('${b.id}', '${b.name.replace(/'/g, "\\'")}')"
-                                style="width:100%; margin-bottom:12px; font-size:13px; border-color:rgba(255,255,255,0.3); color:#aaa;">BANNER DETAILS</button>
-                            <div style="display: flex; gap: 10px; align-items: stretch;">
-                                <button onclick="rollGachapon('${b.id}', ${b.cost})" class="primary-btn" style="flex: 1; font-size: 13px; padding: 10px 5px; display: flex; align-items: center; justify-content: center; gap: 5px;">ROLL 1X <svg class="icon" style="width:14px; height:14px;"><use href="#icon-dice"/></svg></button>
-                                <button onclick="rollGachapon5('${b.id}', ${b.cost})" class="primary-btn" style="flex: 1.4; font-size: 12px; padding: 10px 5px; background: linear-gradient(135deg, #00FF87 0%, #60EFFF 100%); color: #000; border: none; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 3px;">ROLL 5X (Guaranteed Avatar)</button>
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-
-            cachedAvatars = result.avatars;
-            cachedCurrentAvatarId = result.student.currentAvatar;
-
-            const realGrid = document.getElementById('real-inventory-grid');
-            realGrid.innerHTML = "";
-            if (result.inventory.length === 0) {
-                realGrid.innerHTML = `<p style="color:#888; text-align:center;">INVENTORY IS EMPTY.</p>`;
-            } else {
-                result.inventory.forEach(item => {
-                    const descSafe = (item.description || 'NO DESCRIPTION AVAILABLE').replace(/`/g, "'");
-                    const nameSafe = item.name.replace(/`/g, "'");
-                    const rarityClass = 'rarity-' + (item.rarity || 'n').toLowerCase();
-                    realGrid.innerHTML += `
-                        <div class="item-card ${rarityClass}" data-desc="${descSafe}" data-name="${nameSafe}">
-                            <span class="qty-badge">x${item.qty}</span>
-                            <img src="${item.imageUrl || 'https://via.placeholder.com/70'}" alt="${item.name}">
-                            <div style="font-size:13px; font-weight:bold; text-transform:uppercase;">${item.name}</div>
-                            <img src="${rarityStars[item.rarity || 'N']}" style="height: 16px; margin: 5px auto 0; display: block;" alt="stars">
-                        </div>
-                    `;
-                });
-            }
-
-            const matBody = document.getElementById('materials-list-body');
-            if (matBody) {
-                matBody.innerHTML = "";
-                if (!result.materials || result.materials.length === 0) {
-                    matBody.innerHTML = `<tr><td colspan="2" style="text-align:center; color:#888;">NO MATERIALS AVAILABLE</td></tr>`;
-                } else {
-                    result.materials.forEach(item => {
-                        matBody.innerHTML += `
-                            <tr>
-                                <td style="font-weight: bold; vertical-align: middle;">${item.name}</td>
-                                <td style="text-align:center;">
-                                    <a href="${item.link}" target="_blank" style="text-decoration:none;">
-                                        <button class="primary-btn" style="padding: 5px 15px; font-size: 13px;">OPEN LINK</button>
-                                    </a>
-                                </td>
-                            </tr>
-                        `;
-                    });
-                }
-            }
-
+            const bannerContainer = document.getElementById('gacha-banners-list'); bannerContainer.innerHTML = "";
+            if (result.banners.length === 0) { bannerContainer.innerHTML = `<p style="color:#888; text-align:center;">NO GACHAPON BANNERS ACTIVE RIGHT NOW.</p>`; } else { result.banners.forEach(b => { const bImg = b.imageUrl ? `<img class="banner-img" src="${b.imageUrl}" alt="${b.name}">` : ''; bannerContainer.innerHTML += `<div class="gacha-banner-card">${bImg}<h3 style="margin-bottom:10px;">${b.name}</h3><p style="color:#00E5FF; font-size:18px; font-weight:bold; margin: 10px 0 15px;">${b.cost} GEMS PER ROLL</p><button onclick="openBannerDetail('${b.id}', '${b.name.replace(/'/g, "\\'")}')" style="width:100%; margin-bottom:12px; font-size:13px; border-color:rgba(255,255,255,0.3); color:#aaa;">BANNER DETAILS</button><div style="display: flex; gap: 10px; align-items: stretch;"><button onclick="rollGachapon('${b.id}', ${b.cost})" class="primary-btn" style="flex: 1; font-size: 13px; padding: 10px 5px; display: flex; align-items: center; justify-content: center; gap: 5px;">ROLL 1X <svg class="icon" style="width:14px; height:14px;"><use href="#icon-dice"/></svg></button><button onclick="rollGachapon5('${b.id}', ${b.cost})" class="primary-btn" style="flex: 1.4; font-size: 12px; padding: 10px 5px; background: linear-gradient(135deg, #00FF87 0%, #60EFFF 100%); color: #000; border: none; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 3px;">ROLL 5X (Guaranteed Avatar)</button></div></div>`; }); }
+            cachedAvatars = result.avatars; cachedCurrentAvatarId = result.student.currentAvatar;
+            const realGrid = document.getElementById('real-inventory-grid'); realGrid.innerHTML = "";
+            if (result.inventory.length === 0) { realGrid.innerHTML = `<p style="color:#888; text-align:center;">INVENTORY IS EMPTY.</p>`; } else { result.inventory.forEach(item => { const descSafe = (item.description || 'NO DESCRIPTION AVAILABLE').replace(/`/g, "'"); const nameSafe = item.name.replace(/`/g, "'"); realGrid.innerHTML += `<div class="item-card" data-desc="${descSafe}" data-name="${nameSafe}"><span class="qty-badge">x${item.qty}</span><img src="${item.imageUrl || 'https://via.placeholder.com/70'}" alt="${item.name}"><div style="font-size:13px; font-weight:bold; text-transform:uppercase;">${item.name}</div></div>`; }); }
+            const matBody = document.getElementById('materials-list-body'); if (matBody) { matBody.innerHTML = ""; if (!result.materials || result.materials.length === 0) { matBody.innerHTML = `<tr><td colspan="2" style="text-align:center; color:#888;">NO MATERIALS AVAILABLE</td></tr>`; } else { result.materials.forEach(item => { matBody.innerHTML += `<tr><td style="font-weight: bold; vertical-align: middle;">${item.name}</td><td style="text-align:center;"><a href="${item.link}" target="_blank" style="text-decoration:none;"><button class="primary-btn" style="padding: 5px 15px; font-size: 13px;">OPEN LINK</button></a></td></tr>`; }); } }
             document.getElementById('main-panel').classList.remove('hidden');
         }
 
-        function preloadImages(urls) {
-            const uniqueUrls = [...new Set(urls.filter(Boolean))];
-            if (uniqueUrls.length === 0) return Promise.resolve();
+        function preloadImages(urls) { const uniqueUrls = [...new Set(urls.filter(Boolean))]; if (uniqueUrls.length === 0) return Promise.resolve(); return new Promise((resolve) => { let loadedCount = 0; const total = uniqueUrls.length; let resolved = false; const timer = setTimeout(() => { if (!resolved) { resolved = true; resolve(); } }, 5000); function checkDone() { loadedCount++; if (loadedCount >= total && !resolved) { resolved = true; clearTimeout(timer); resolve(); } } uniqueUrls.forEach(url => { const img = new Image(); img.onload = checkDone; img.onerror = checkDone; img.src = url; }); }); }
+        async function loadStudentPortal(showSpinner) { document.getElementById('login-panel').classList.add('hidden'); const cacheKey = 'portal_cache_' + currentStudentId; const cached = localStorage.getItem(cacheKey); if (cached && !showSpinner) { try { cachedPortalData = JSON.parse(cached); renderPortal(cachedPortalData); } catch (e) { } } else { toggleLoading(true); } try { const response = await fetch(`${apiWebUrl}?action=getStudentProfile&studentId=${currentStudentId}&password=${currentPasswordHash}`); const result = await response.json(); if (result.success === false) { toggleLoading(false); localStorage.removeItem(cacheKey); logout(); showModal("SESSION EXPIRED OR UNAUTHORIZED", "ERROR"); return; } const imagesToLoad = []; if (result.currentAvatarUrl) imagesToLoad.push(result.currentAvatarUrl); if (result.banners) result.banners.forEach(b => { if (b.imageUrl) imagesToLoad.push(b.imageUrl); }); if (result.inventory) result.inventory.forEach(item => { if (item.imageUrl) imagesToLoad.push(item.imageUrl); }); if (result.avatars) result.avatars.forEach(item => { if (item.imageUrl) imagesToLoad.push(item.imageUrl); }); await preloadImages(imagesToLoad); toggleLoading(false); cachedPortalData = result; localStorage.setItem(cacheKey, JSON.stringify(result)); renderPortal(result); } catch (e) { toggleLoading(false); if (!cachedPortalData) { logout(); showModal("COULD NOT CONNECT TO SERVER DATA.", "ERROR"); } } }
 
-            return new Promise((resolve) => {
-                let loadedCount = 0;
-                const total = uniqueUrls.length;
-                let resolved = false;
+        function openAvatarPicker() { const grid = document.getElementById('avatar-picker-grid'); grid.innerHTML = ""; if (cachedAvatars.length === 0) { grid.innerHTML = `<p style="color:#888; text-align:center; grid-column: 1/-1;">NO AVATARS YET. ROLL GACHA TO GET SOME!</p>`; } else { const rarityOrder = { 'N': 0, 'R': 1, 'SR': 2, 'SSR': 3, 'UR': 4 }; const sorted = [...cachedAvatars].sort((a, b) => { const orderA = rarityOrder[a.rarity] !== undefined ? rarityOrder[a.rarity] : 99; const orderB = rarityOrder[b.rarity] !== undefined ? rarityOrder[b.rarity] : 99; if (orderA !== orderB) return orderA - orderB; return (b.indexNo || 0) - (a.indexNo || 0); }); sorted.forEach(item => { const isEquipped = cachedCurrentAvatarId === item.id; grid.innerHTML += `<div class="avatar-pick-item ${isEquipped ? 'equipped' : ''}" onclick="changeAvatar('${item.id}')"><img src="${item.imageUrl || 'https://via.placeholder.com/60'}" alt="${item.name}"><div class="pick-name">${item.name}</div>${isEquipped ? '<div style="font-size:9px; color:#00E5FF; font-weight:bold; margin-top:2px;">EQUIPPED</div>' : ''}</div>`; }); } document.getElementById('avatar-picker-modal').classList.remove('hidden'); }
+        function closeAvatarPicker(e) { if (e && e.target !== e.currentTarget) return; document.getElementById('avatar-picker-modal').classList.add('hidden'); }
+        async function changeAvatar(itemId) { document.getElementById('avatar-picker-modal').classList.add('hidden'); const chosenAvatar = cachedAvatars.find(a => a.id === itemId); if (chosenAvatar && chosenAvatar.imageUrl) { document.getElementById('profile-avatar-img').src = chosenAvatar.imageUrl; } cachedCurrentAvatarId = itemId; if (cachedPortalData) { cachedPortalData.student.currentAvatar = itemId; if (chosenAvatar && chosenAvatar.imageUrl) cachedPortalData.currentAvatarUrl = chosenAvatar.imageUrl; localStorage.setItem('portal_cache_' + currentStudentId, JSON.stringify(cachedPortalData)); } try { const response = await fetch(`${apiWebUrl}?action=changeAvatar&studentId=${currentStudentId}&password=${currentPasswordHash}&itemId=${itemId}`); const result = await response.json(); if (!result.success) { showModal(result.error, 'ERROR'); loadStudentPortal(true); } } catch (e) { showModal('CHANGE AVATAR CONNECTION FAILED.', 'ERROR'); loadStudentPortal(true); } }
 
-                const timer = setTimeout(() => {
-                    if (!resolved) {
-                        resolved = true;
-                        resolve();
-                    }
-                }, 5000);
+        // 🎁 Gift Box Gacha Functions
+        let rollResult = null, giftBoxClickHandler = null;
 
-                function checkDone() {
-                    loadedCount++;
-                    if (loadedCount >= total && !resolved) {
-                        resolved = true;
-                        clearTimeout(timer);
-                        resolve();
-                    }
-                }
+        function getBoxType(rolls) {
+            const rarities = (Array.isArray(rolls) ? rolls : [rolls]).map(r => (r.item?.rarity || r.rarity || 'N').toUpperCase());
+            if (rarities.includes('SSR') || rarities.includes('UR')) return '3box';
+            if (rarities.includes('SR')) return '2box';
+            return '1box';
+        }
 
-                uniqueUrls.forEach(url => {
-                    const img = new Image();
-                    img.onload = checkDone;
-                    img.onerror = checkDone;
-                    img.src = url;
+        function showGiftBox(boxType) {
+            // Hide processing, show box
+            document.getElementById('gift-processing').classList.add('hidden');
+            const boxImg = document.getElementById('gift-box-img');
+            const hint = document.getElementById('gift-box-hint');
+
+            const boxTypes = {
+                '3box': 'https://i.postimg.cc/BnSmzkBt/3box.png',
+                '2box': 'https://i.postimg.cc/htD2Y61f/2box.png',
+                '1box': 'https://i.postimg.cc/P5XS79QJ/1box.png'
+            };
+            boxImg.src = boxTypes[boxType] || boxTypes['1box'];
+            boxImg.classList.remove('hidden');
+            boxImg.classList.add('shaking');
+            hint.classList.remove('hidden');
+
+            // Add click handler to open box
+            giftBoxClickHandler = () => {
+                boxImg.classList.remove('shaking');
+                hint.classList.add('hidden');
+                showRevealResults();
+                boxImg.removeEventListener('click', giftBoxClickHandler);
+                boxImg.removeEventListener('touchstart', giftBoxClickHandler);
+            };
+            boxImg.addEventListener('click', giftBoxClickHandler);
+            boxImg.addEventListener('touchstart', giftBoxClickHandler, { passive: true });
+        }
+
+        function showRevealResults() {
+            if (!rollResult || !rollResult.success) return;
+
+            // Single roll reveal
+            if (rollResult.item) {
+                const revealImg = document.getElementById('reveal-item-img');
+                revealImg.src = rollResult.item.imageUrl || 'https://via.placeholder.com/150';
+                document.getElementById('reveal-item-name').innerText = rollResult.item.name;
+                const dupText = document.getElementById('reveal-duplicate-text');
+                if (rollResult.isDuplicate) { dupText.innerText = `DUPLICATE! +${rollResult.refundedGems} GEMS REFUNDED`; dupText.classList.remove('hidden'); } else { dupText.classList.add('hidden'); }
+                document.getElementById('single-reveal-content').classList.remove('hidden');
+                document.getElementById('multi-reveal-content').classList.add('hidden');
+            }
+            // Multi roll (5x) reveal
+            else if (rollResult.rolls) {
+                const multiContainer = document.getElementById('multi-reveal-content');
+                multiContainer.innerHTML = "";
+                rollResult.rolls.forEach(r => {
+                    const dupBadge = r.isDuplicate ? `<div style="font-size:10px; color:#ff3333; font-weight:bold; margin-top:4px;">DUPLICATE (+${r.refundedGems} GEMS)</div>` : '';
+                    multiContainer.innerHTML += `<div style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding:12px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:8px;"><div class="avatar-container" style="width:80px; height:80px; margin-bottom:8px;"><img src="${r.item.imageUrl || 'https://via.placeholder.com/80'}" style="width:100%; height:100%; object-fit:cover;"></div><div style="font-size:12px; font-weight:bold; color:#fff; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width:100%; margin-bottom:2px;" title="${r.item.name}">${r.item.name}</div><div style="font-size:10px; color:#888;">${r.item.type}</div>${dupBadge}</div>`;
                 });
-            });
+                document.getElementById('single-reveal-content').classList.add('hidden');
+                multiContainer.classList.remove('hidden');
+            }
+
+            document.getElementById('gacha-reveal-box').classList.remove('hidden');
+            document.getElementById('profile-gems').innerText = rollResult.newGems;
+            document.querySelectorAll('.gacha-tab-gems').forEach(el => el.innerText = rollResult.newGems);
         }
-
-        async function loadStudentPortal(showSpinner) {
-            document.getElementById('login-panel').classList.add('hidden');
-
-            const cacheKey = 'portal_cache_' + currentStudentId;
-            const cached = localStorage.getItem(cacheKey);
-            if (cached && !showSpinner) {
-                try {
-                    cachedPortalData = JSON.parse(cached);
-                    renderPortal(cachedPortalData);
-                } catch (e) { /* ignore bad cache */ }
-            } else {
-                toggleLoading(true);
-            }
-
-            try {
-                const response = await fetch(`${apiWebUrl}?action=getStudentProfile&studentId=${currentStudentId}&password=${currentPasswordHash}`);
-                const result = await response.json();
-
-                if (result.success === false) {
-                    toggleLoading(false);
-                    localStorage.removeItem(cacheKey);
-                    logout();
-                    showModal("SESSION EXPIRED OR UNAUTHORIZED", "ERROR");
-                    return;
-                }
-
-                const imagesToLoad = [];
-                if (result.currentAvatarUrl) imagesToLoad.push(result.currentAvatarUrl);
-                if (result.banners) {
-                    result.banners.forEach(b => { if (b.imageUrl) imagesToLoad.push(b.imageUrl); });
-                }
-                if (result.inventory) {
-                    result.inventory.forEach(item => { if (item.imageUrl) imagesToLoad.push(item.imageUrl); });
-                }
-                if (result.avatars) {
-                    result.avatars.forEach(item => { if (item.imageUrl) imagesToLoad.push(item.imageUrl); });
-                }
-
-                await preloadImages(imagesToLoad);
-
-                toggleLoading(false);
-
-                cachedPortalData = result;
-                localStorage.setItem(cacheKey, JSON.stringify(result));
-
-                renderPortal(result);
-
-            } catch (e) {
-                toggleLoading(false);
-                if (!cachedPortalData) {
-                    logout();
-                    showModal("COULD NOT CONNECT TO SERVER DATA.", "ERROR");
-                }
-            }
-        }
-
-        function openAvatarPicker() {
-            const grid = document.getElementById('avatar-picker-grid');
-            grid.innerHTML = "";
-
-            if (cachedAvatars.length === 0) {
-                grid.innerHTML = `<p style="color:#888; text-align:center; grid-column: 1/-1;">NO AVATARS YET. ROLL GACHA TO GET SOME!</p>`;
-            } else {
-                const rarityOrder = { 'N': 0, 'R': 1, 'SR': 2, 'SSR': 3, 'UR': 4 };
-                const sorted = [...cachedAvatars].sort((a, b) => {
-                    const orderA = rarityOrder[a.rarity] !== undefined ? rarityOrder[a.rarity] : 99;
-                    const orderB = rarityOrder[b.rarity] !== undefined ? rarityOrder[b.rarity] : 99;
-                    if (orderA !== orderB) {
-                        return orderA - orderB;
-                    }
-                    return (b.indexNo || 0) - (a.indexNo || 0);
-                });
-
-                sorted.forEach(item => {
-                    const isEquipped = cachedCurrentAvatarId === item.id;
-                    const rarityClass = 'rarity-' + (item.rarity || 'N').toLowerCase();
-                    grid.innerHTML += `
-                        <div class="avatar-pick-item ${rarityClass} ${isEquipped ? 'equipped' : ''}" onclick="changeAvatar('${item.id}')">
-                            <img src="${item.imageUrl || 'https://via.placeholder.com/60'}" alt="${item.name}">
-                            <div class="pick-name">${item.name}</div>
-                            <img src="${rarityStars[item.rarity || 'N']}" style="height: 14px; margin: 4px auto 0; display: block;" alt="stars">
-                            ${isEquipped ? '<div style="font-size:9px; color:#00E5FF; font-weight:bold; margin-top:2px;">EQUIPPED</div>' : ''}
-                        </div>
-                    `;
-                });
-            }
-
-            document.getElementById('avatar-picker-modal').classList.remove('hidden');
-        }
-
-        function closeAvatarPicker(e) {
-            if (e && e.target !== e.currentTarget) return;
-            document.getElementById('avatar-picker-modal').classList.add('hidden');
-        }
-
-        async function changeAvatar(itemId) {
-            document.getElementById('avatar-picker-modal').classList.add('hidden');
-
-            const chosenAvatar = cachedAvatars.find(a => a.id === itemId);
-            if (chosenAvatar && chosenAvatar.imageUrl) {
-                const avatarImg = document.getElementById('profile-avatar-img');
-                avatarImg.src = chosenAvatar.imageUrl;
-                const avatarContainer = avatarImg.closest('.avatar-container');
-                if (avatarContainer) {
-                    avatarContainer.className = 'avatar-container rarity-' + (chosenAvatar.rarity || 'n').toLowerCase();
-                }
-            }
-            cachedCurrentAvatarId = itemId;
-
-            if (cachedPortalData) {
-                cachedPortalData.student.currentAvatar = itemId;
-                if (chosenAvatar && chosenAvatar.imageUrl) {
-                    cachedPortalData.currentAvatarUrl = chosenAvatar.imageUrl;
-                    cachedPortalData.currentAvatarRarity = chosenAvatar.rarity || "N";
-                }
-                const cacheKey = 'portal_cache_' + currentStudentId;
-                localStorage.setItem(cacheKey, JSON.stringify(cachedPortalData));
-            }
-
-            try {
-                const response = await fetch(`${apiWebUrl}?action=changeAvatar&studentId=${currentStudentId}&password=${currentPasswordHash}&itemId=${itemId}`);
-                const result = await response.json();
-                if (!result.success) {
-                    showModal(result.error, 'ERROR');
-                    loadStudentPortal(true);
-                }
-            } catch (e) {
-                showModal('CHANGE AVATAR CONNECTION FAILED.', 'ERROR');
-                loadStudentPortal(true);
-            }
-        }
-
-        let rollResult = null;
-        let rollFinishedAnimation = false;
 
         async function rollGachapon(bannerId, cost) {
-            const confirmed = await showConfirm(`SPEND ${cost} GEMS TO ROLL THIS BANNER?`, 'ROLL GACHAPON');
-            if (!confirmed) return;
-
-            if (cost) {
-                const currentGems = parseInt(document.getElementById('profile-gems').innerText) || 0;
-                const newGemsVal = Math.max(0, currentGems - cost);
-                document.getElementById('profile-gems').innerText = newGemsVal;
-                document.querySelectorAll('.gacha-tab-gems').forEach(el => el.innerText = newGemsVal);
-            }
+            const confirmed = await showConfirm(`SPEND ${cost} GEMS TO ROLL THIS BANNER?`, 'ROLL GACHAPON'); if (!confirmed) return;
+            if (cost) { const currentGems = parseInt(document.getElementById('profile-gems').innerText) || 0; const newGemsVal = Math.max(0, currentGems - cost); document.getElementById('profile-gems').innerText = newGemsVal; document.querySelectorAll('.gacha-tab-gems').forEach(el => el.innerText = newGemsVal); }
 
             document.getElementById('gacha-roll-overlay').classList.remove('hidden');
-            document.getElementById('gacha-roll-animation').classList.remove('hidden');
+            document.getElementById('gift-box-container').classList.remove('hidden');
             document.getElementById('gacha-reveal-box').classList.add('hidden');
             document.getElementById('reveal-duplicate-text').classList.add('hidden');
 
-            const items = cachedBannerItems[bannerId.trim()] || [];
-            const rollAvatarEl = document.getElementById('gacha-roll-avatar');
-            const rollNameEl = document.getElementById('gacha-roll-name');
-            const animContainer = document.getElementById('gacha-roll-avatar-container');
+            // Show processing message first
+            document.getElementById('gift-processing').classList.remove('hidden');
+            document.getElementById('gift-box-img').classList.add('hidden');
+            document.getElementById('gift-box-hint').classList.add('hidden');
 
-            // Reset animation container state
             rollResult = null;
-            rollFinishedAnimation = false;
-            let revealTimeout = null;
-            let ticks = 0;
-            let speed = 60;
-            const maxTicks = 35;
 
-            if (animContainer) {
-                animContainer.classList.remove('rarity-n', 'rarity-r', 'rarity-sr', 'rarity-ssr', 'rarity-ur');
-                animContainer.classList.add('rarity-n');
-                animContainer.style.transition = 'none'; // Disable transitions for instant sync
-            }
-
-            function tick() {
-                ticks++;
-                if (items.length > 0) {
-                    const randItem = items[Math.floor(Math.random() * items.length)];
-
-                    // FIX: Cache-busting timestamp to force fresh image load
-                    const imgUrl = (randItem.imageUrl || 'https://via.placeholder.com/150') + '?t=' + Date.now();
-                    rollAvatarEl.src = imgUrl;
-                    rollNameEl.innerText = randItem.name;
-
-                    // FIX: Dynamic rarity border update synced with image
-                    const rarity = (randItem.rarity || 'N').toString().toUpperCase();
-                    if (animContainer) {
-                        animContainer.classList.remove('rarity-n', 'rarity-r', 'rarity-sr', 'rarity-ssr', 'rarity-ur');
-                        animContainer.classList.add('rarity-' + rarity.toLowerCase());
-                    }
-                }
-                rollAvatarEl.style.transform = `scale(${ticks % 2 === 0 ? 0.95 : 1.05})`;
-
-                if (ticks < maxTicks) {
-                    if (ticks > 25) speed += 30;
-                    if (ticks > 30) speed += 50;
-                    setTimeout(tick, speed);
-                } else {
-                    rollFinishedAnimation = true;
-                    checkReveal();
-                }
-            }
-
-            tick();
-
+            // Fetch result from server
             try {
                 const response = await fetch(`${apiWebUrl}?action=rollGacha&studentId=${currentStudentId}&password=${currentPasswordHash}&bannerId=${bannerId}`);
                 rollResult = await response.json();
-                checkReveal();
-            } catch (e) {
-                rollResult = { success: false, error: 'CONNECTION FAILED' };
-                checkReveal();
+            } catch (e) { rollResult = { success: false, error: 'CONNECTION FAILED' }; }
+
+            if (!rollResult.success) {
+                document.getElementById('gacha-roll-overlay').classList.add('hidden');
+                loadStudentPortal(true);
+                showModal('ROLL FAILED: ' + rollResult.error, 'ERROR');
+                return;
             }
 
-            function checkReveal() {
-                if (!rollFinishedAnimation || !rollResult) {
-                    if (rollFinishedAnimation && !rollResult) {
-                        if (items.length > 0) {
-                            const randItem = items[Math.floor(Math.random() * items.length)];
-                            rollAvatarEl.src = randItem.imageUrl || 'https://via.placeholder.com/150';
-                            rollNameEl.innerText = randItem.name;
-                        }
-                        setTimeout(checkReveal, 200);
-                    }
-                    return;
-                }
-
-                if (revealTimeout) return;
-
-                if (rollResult.success) {
-                    rollAvatarEl.src = rollResult.item.imageUrl || 'https://via.placeholder.com/150';
-                    rollNameEl.innerText = rollResult.item.name;
-                    rollAvatarEl.style.transform = 'scale(1.1)';
-
-                    revealTimeout = setTimeout(() => {
-                        document.getElementById('gacha-roll-animation').classList.add('hidden');
-                        const revealImg = document.getElementById('reveal-item-img');
-
-                        // FIX: Cache-busting for final reveal image
-                        const finalImgUrl = (rollResult.item.imageUrl || 'https://via.placeholder.com/150') + '?t=' + Date.now();
-                        revealImg.src = finalImgUrl;
-
-                        const singleRevealContainer = revealImg.closest('.avatar-container');
-                        if (singleRevealContainer) {
-                            singleRevealContainer.className = 'avatar-container rarity-' + (rollResult.item.rarity || 'n').toLowerCase();
-                        }
-                        document.getElementById('reveal-item-name').innerText = rollResult.item.name;
-                        const starsImg = document.getElementById('reveal-item-stars');
-                        if (starsImg) {
-                            starsImg.src = rarityStars[(rollResult.item.rarity || 'N').toUpperCase()] || rarityStars['N'];
-                        }
-
-                        const dupText = document.getElementById('reveal-duplicate-text');
-                        if (rollResult.isDuplicate) {
-                            dupText.innerText = `DUPLICATE! +${rollResult.refundedGems} GEMS REFUNDED`;
-                            dupText.classList.remove('hidden');
-                        } else {
-                            dupText.classList.add('hidden');
-                        }
-
-                        document.getElementById('single-reveal-content').classList.remove('hidden');
-                        document.getElementById('multi-reveal-content').classList.add('hidden');
-                        document.getElementById('gacha-reveal-box').classList.remove('hidden');
-                        document.getElementById('profile-gems').innerText = rollResult.newGems;
-                        document.querySelectorAll('.gacha-tab-gems').forEach(el => el.innerText = rollResult.newGems);
-                        revealTimeout = null;
-                    }, 1000);
-                } else {
-                    document.getElementById('gacha-roll-overlay').classList.add('hidden');
-                    loadStudentPortal(true);
-                    showModal('ROLL FAILED: ' + rollResult.error, 'ERROR');
-                }
-            }
+            // Show appropriate gift box AFTER server response
+            const boxType = getBoxType(rollResult);
+            showGiftBox(boxType);
         }
 
         async function rollGachapon5(bannerId, cost) {
             const totalCost = cost * 5;
-            const confirmed = await showConfirm(`SPEND ${totalCost} GEMS TO ROLL 5 TIMES?`, 'ROLL 5X GACHAPON');
-            if (!confirmed) return;
-
-            if (totalCost) {
-                const currentGems = parseInt(document.getElementById('profile-gems').innerText) || 0;
-                const newGemsVal = Math.max(0, currentGems - totalCost);
-                document.getElementById('profile-gems').innerText = newGemsVal;
-                document.querySelectorAll('.gacha-tab-gems').forEach(el => el.innerText = newGemsVal);
-            }
+            const confirmed = await showConfirm(`SPEND ${totalCost} GEMS TO ROLL 5 TIMES?`, 'ROLL 5X GACHAPON'); if (!confirmed) return;
+            if (totalCost) { const currentGems = parseInt(document.getElementById('profile-gems').innerText) || 0; const newGemsVal = Math.max(0, currentGems - totalCost); document.getElementById('profile-gems').innerText = newGemsVal; document.querySelectorAll('.gacha-tab-gems').forEach(el => el.innerText = newGemsVal); }
 
             document.getElementById('gacha-roll-overlay').classList.remove('hidden');
-            document.getElementById('gacha-roll-animation').classList.remove('hidden');
+            document.getElementById('gift-box-container').classList.remove('hidden');
             document.getElementById('gacha-reveal-box').classList.add('hidden');
 
-            const items = cachedBannerItems[bannerId.trim()] || [];
-            const rollAvatarEl = document.getElementById('gacha-roll-avatar');
-            const rollNameEl = document.getElementById('gacha-roll-name');
-            const animContainer = document.getElementById('gacha-roll-avatar-container');
+            // Show processing message first
+            document.getElementById('gift-processing').classList.remove('hidden');
+            document.getElementById('gift-box-img').classList.add('hidden');
+            document.getElementById('gift-box-hint').classList.add('hidden');
 
-            let roll5Result = null;
-            let rollFinishedAnimation = false;
-            let revealTimeout = null;
-            let ticks = 0;
-            let speed = 60;
-            const maxTicks = 35;
+            rollResult = null;
 
-            // Reset animation container state
-            if (animContainer) {
-                animContainer.classList.remove('rarity-n', 'rarity-r', 'rarity-sr', 'rarity-ssr', 'rarity-ur');
-                animContainer.classList.add('rarity-n');
-                animContainer.style.transition = 'none';
-            }
-
-            function tick() {
-                ticks++;
-                if (items.length > 0) {
-                    const randItem = items[Math.floor(Math.random() * items.length)];
-
-                    // FIX: Cache-busting timestamp
-                    const imgUrl = (randItem.imageUrl || 'https://via.placeholder.com/150') + '?t=' + Date.now();
-                    rollAvatarEl.src = imgUrl;
-                    rollNameEl.innerText = randItem.name;
-
-                    // FIX: Dynamic rarity border update
-                    const rarity = (randItem.rarity || 'N').toString().toUpperCase();
-                    if (animContainer) {
-                        animContainer.classList.remove('rarity-n', 'rarity-r', 'rarity-sr', 'rarity-ssr', 'rarity-ur');
-                        animContainer.classList.add('rarity-' + rarity.toLowerCase());
-                    }
-                }
-                rollAvatarEl.style.transform = `scale(${ticks % 2 === 0 ? 0.95 : 1.05})`;
-
-                if (ticks < maxTicks) {
-                    if (ticks > 25) speed += 30;
-                    if (ticks > 30) speed += 50;
-                    setTimeout(tick, speed);
-                } else {
-                    rollFinishedAnimation = true;
-                    checkReveal();
-                }
-            }
-
-            tick();
-
+            // Fetch result from server
             try {
                 const response = await fetch(`${apiWebUrl}?action=rollGacha5&studentId=${currentStudentId}&password=${currentPasswordHash}&bannerId=${bannerId}`);
-                roll5Result = await response.json();
-                checkReveal();
-            } catch (e) {
-                roll5Result = { success: false, error: 'CONNECTION FAILED' };
-                checkReveal();
+                rollResult = await response.json();
+            } catch (e) { rollResult = { success: false, error: 'CONNECTION FAILED' }; }
+
+            if (!rollResult.success) {
+                document.getElementById('gacha-roll-overlay').classList.add('hidden');
+                loadStudentPortal(true);
+                showModal('ROLL FAILED: ' + rollResult.error, 'ERROR');
+                return;
             }
 
-            function checkReveal() {
-                if (!rollFinishedAnimation || !roll5Result) {
-                    if (rollFinishedAnimation && !roll5Result) {
-                        if (items.length > 0) {
-                            const randItem = items[Math.floor(Math.random() * items.length)];
-                            rollAvatarEl.src = randItem.imageUrl || 'https://via.placeholder.com/150';
-                            rollNameEl.innerText = randItem.name;
-                        }
-                        setTimeout(checkReveal, 200);
-                    }
-                    return;
-                }
-
-                if (revealTimeout) return;
-
-                if (roll5Result.success) {
-                    const guaranteedAvatarRoll = roll5Result.rolls.find(r => r.item.type === 'Avatar');
-                    const displayItem = guaranteedAvatarRoll ? guaranteedAvatarRoll.item : roll5Result.rolls[0].item;
-
-                    rollAvatarEl.src = displayItem.imageUrl || 'https://via.placeholder.com/150';
-                    rollNameEl.innerText = displayItem.name + " (AND MORE!)";
-                    rollAvatarEl.style.transform = 'scale(1.1)';
-
-                    revealTimeout = setTimeout(() => {
-                        document.getElementById('gacha-roll-animation').classList.add('hidden');
-
-                        const multiContainer = document.getElementById('multi-reveal-content');
-                        multiContainer.innerHTML = "";
-
-                        roll5Result.rolls.forEach(r => {
-                            const dupBadge = r.isDuplicate ? `<div style="font-size:10px; color:#ff3333; font-weight:bold; margin-top:4px;">DUPLICATE (+${r.refundedGems} GEMS)</div>` : '';
-                            const rarityClass = 'rarity-' + (r.item.rarity || 'n').toLowerCase();
-                            // FIX: Cache-busting for grid images
-                            const gridImgUrl = (r.item.imageUrl || 'https://via.placeholder.com/80') + '?t=' + Date.now();
-
-                            multiContainer.innerHTML += `
-                                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding:12px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:8px;">
-                                    <div class="avatar-container ${rarityClass}" style="width:80px; height:80px; margin-bottom:8px;">
-                                        <img src="${gridImgUrl}" style="width:100%; height:100%; object-fit:cover;">
-                                    </div>
-                                    <div style="font-size:12px; font-weight:bold; color:#fff; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width:100%; margin-bottom:2px;" title="${r.item.name}">${r.item.name}</div>
-                                    <img src="${rarityStars[(r.item.rarity || 'N').toUpperCase()]}" style="height: 12px; margin-bottom: 4px;" alt="stars">
-                                    <div style="font-size:10px; color:#888;">${r.item.type}</div>
-                                    ${dupBadge}
-                                </div>
-                            `;
-                        });
-
-                        document.getElementById('single-reveal-content').classList.add('hidden');
-                        multiContainer.classList.remove('hidden');
-                        document.getElementById('gacha-reveal-box').classList.remove('hidden');
-
-                        document.getElementById('profile-gems').innerText = roll5Result.newGems;
-                        document.querySelectorAll('.gacha-tab-gems').forEach(el => el.innerText = roll5Result.newGems);
-                        revealTimeout = null;
-                    }, 1000);
-                } else {
-                    document.getElementById('gacha-roll-overlay').classList.add('hidden');
-                    loadStudentPortal(true);
-                    showModal('ROLL FAILED: ' + roll5Result.error, 'ERROR');
-                }
-            }
-        }
-
-        function openBannerDetail(bannerId, bannerName) {
-            const trimmedId = (bannerId || '').trim();
-            const items = cachedBannerItems[trimmedId] || [];
-            document.getElementById('banner-detail-title').innerText = bannerName + ' — DROP RATES';
-            const content = document.getElementById('banner-detail-content');
-
-            if (items.length === 0) {
-                content.innerHTML = '<p style="color:#888;">NO ITEMS IN THIS BANNER.</p>';
-            } else {
-                const rarityOrder = { 'UR': 0, 'SSR': 1, 'SR': 2, 'R': 3, 'N': 4 };
-                const sorted = [...items].sort((a, b) => {
-                    const orderA = rarityOrder[a.rarity] !== undefined ? rarityOrder[a.rarity] : 99;
-                    const orderB = rarityOrder[b.rarity] !== undefined ? rarityOrder[b.rarity] : 99;
-                    if (orderA !== orderB) {
-                        return orderA - orderB;
-                    }
-                    return b.dropRate - a.dropRate;
-                });
-                const maxRate = Math.max(...sorted.map(i => i.dropRate));
-
-                let html = `<table class="banner-detail-table">
-                    <thead><tr><th>ITEM</th><th>TYPE</th><th style="text-align:right;">DROP RATE</th></tr></thead><tbody>`;
-                sorted.forEach(item => {
-                    const formattedRate = Number(item.dropRate).toFixed(2);
-                    const pct = (maxRate > 0) ? (item.dropRate / maxRate * 100) : 0;
-                    const imgSrc = item.imageUrl || 'https://via.placeholder.com/36';
-                    const rarityClass = 'rarity-' + (item.rarity || 'n').toLowerCase();
-                    html += `<tr>
-                        <td>
-                            <img class="item-thumb ${rarityClass}" src="${imgSrc}" alt="${item.name}">
-                            <div style="display:inline-block; vertical-align:middle;">
-                                <div style="font-weight:bold;">${item.name}</div>
-                                <img src="${rarityStars[item.rarity || 'N']}" style="height:12px; display:block; margin-top:2px;" alt="stars">
-                            </div>
-                        </td>
-                        <td style="color:#888; vertical-align:middle;">${item.type}</td>
-                        <td style="text-align:right;">
-                            <span style="color:#00E5FF; font-weight:bold;">${formattedRate}%</span>
-                            <div class="rate-bar"><div class="rate-fill" style="width:${pct}%"></div></div>
-                        </td>
-                    </tr>`;
-                });
-                html += '</tbody></table>';
-                content.innerHTML = html;
-            }
-
-            document.getElementById('banner-detail-modal').classList.remove('hidden');
-        }
-
-        function closeBannerDetail(e) {
-            if (e && e.target !== e.currentTarget) return;
-            document.getElementById('banner-detail-modal').classList.add('hidden');
+            // Show appropriate gift box AFTER server response
+            const boxType = getBoxType(rollResult.rolls);
+            showGiftBox(boxType);
         }
 
         function closeGachaReveal() {
             document.getElementById('gacha-roll-overlay').classList.add('hidden');
+            const boxImg = document.getElementById('gift-box-img');
+            if (giftBoxClickHandler) {
+                boxImg.removeEventListener('click', giftBoxClickHandler);
+                boxImg.removeEventListener('touchstart', giftBoxClickHandler);
+                giftBoxClickHandler = null;
+            }
             loadStudentPortal();
         }
 
-        function logout() {
-            const cacheKey = 'portal_cache_' + currentStudentId;
-            localStorage.removeItem(cacheKey);
-            cachedPortalData = null;
-            currentStudentId = "";
-            currentPasswordHash = "";
-            localStorage.removeItem('student_id');
-            localStorage.removeItem('student_pass_hash');
-            showLogin();
-        }
-
-        // Custom Item Tooltip
-        (function () {
-            const tooltip = document.getElementById('item-tooltip');
-            const tooltipName = document.getElementById('tooltip-name');
-            const tooltipDesc = document.getElementById('tooltip-desc');
-            let hideTimer = null;
-
-            function showTooltip(el, x, y) {
-                const desc = el.dataset.desc || '';
-                const name = el.dataset.name || '';
-                if (!desc && !name) return;
-                tooltipName.textContent = name;
-                tooltipDesc.textContent = desc;
-
-                tooltip.classList.add('visible');
-
-                const tw = tooltip.offsetWidth || 240;
-                const th = tooltip.offsetHeight || 60;
-                const vw = window.innerWidth;
-                const vh = window.innerHeight;
-
-                let left = x + 14;
-                let top = y + 14;
-                if (left + tw > vw - 10) left = x - tw - 14;
-                if (top + th > vh - 10) top = y - th - 14;
-                tooltip.style.left = left + 'px';
-                tooltip.style.top = top + 'px';
-            }
-
-            function hideTooltip() {
-                tooltip.classList.remove('visible');
-            }
-
-            document.addEventListener('mouseover', function (e) {
-                const card = e.target.closest('.item-card[data-desc]');
-                if (card) showTooltip(card, e.clientX, e.clientY);
-            });
-            document.addEventListener('mousemove', function (e) {
-                const card = e.target.closest('.item-card[data-desc]');
-                if (card) showTooltip(card, e.clientX, e.clientY);
-                else hideTooltip();
-            });
-            document.addEventListener('mouseout', function (e) {
-                if (!e.target.closest('.item-card[data-desc]')) hideTooltip();
-            });
-
-            document.addEventListener('touchstart', function (e) {
-                const card = e.target.closest('.item-card[data-desc]');
-                if (card) {
-                    const touch = e.touches[0];
-                    showTooltip(card, touch.clientX, touch.clientY);
-                    clearTimeout(hideTimer);
-                    hideTimer = setTimeout(hideTooltip, 2500);
-                } else {
-                    hideTooltip();
-                }
-            }, { passive: true });
-        })();
+        function openBannerDetail(bannerId, bannerName) { const trimmedId = (bannerId || '').trim(); const items = cachedBannerItems[trimmedId] || []; document.getElementById('banner-detail-title').innerText = bannerName + ' — DROP RATES'; const content = document.getElementById('banner-detail-content'); if (items.length === 0) { content.innerHTML = '<p style="color:#888;">NO ITEMS IN THIS BANNER.</p>'; } else { const rarityOrder = { 'UR': 0, 'SSR': 1, 'SR': 2, 'R': 3, 'N': 4 }; const sorted = [...items].sort((a, b) => { const orderA = rarityOrder[a.rarity] !== undefined ? rarityOrder[a.rarity] : 99; const orderB = rarityOrder[b.rarity] !== undefined ? rarityOrder[b.rarity] : 99; if (orderA !== orderB) return orderA - orderB; return b.dropRate - a.dropRate; }); const maxRate = Math.max(...sorted.map(i => i.dropRate)); let html = `<table class="banner-detail-table"><thead><tr><th>ITEM</th><th>TYPE</th><th style="text-align:right;">DROP RATE</th></tr></thead><tbody>`; sorted.forEach(item => { const formattedRate = Number(item.dropRate).toFixed(2); const pct = (maxRate > 0) ? (item.dropRate / maxRate * 100) : 0; const imgSrc = item.imageUrl || 'https://via.placeholder.com/36'; html += `<tr><td><img class="item-thumb" src="${imgSrc}" alt="${item.name}"><div style="display:inline-block; vertical-align:middle;"><div style="font-weight:bold;">${item.name}</div></div></td><td style="color:#888; vertical-align:middle;">${item.type}</td><td style="text-align:right;"><span style="color:#00E5FF; font-weight:bold;">${formattedRate}%</span><div class="rate-bar"><div class="rate-fill" style="width:${pct}%"></div></div></td></tr>`; }); html += '</tbody></table>'; content.innerHTML = html; } document.getElementById('banner-detail-modal').classList.remove('hidden'); }
+        function closeBannerDetail(e) { if (e && e.target !== e.currentTarget) return; document.getElementById('banner-detail-modal').classList.add('hidden'); }
+        function logout() { localStorage.removeItem('portal_cache_' + currentStudentId); cachedPortalData = null; currentStudentId = ""; currentPasswordHash = ""; localStorage.removeItem('student_id'); localStorage.removeItem('student_pass_hash'); showLogin(); }
+        (function () { const tooltip = document.getElementById('item-tooltip'); const tooltipName = document.getElementById('tooltip-name'); const tooltipDesc = document.getElementById('tooltip-desc'); let hideTimer = null; function showTooltip(el, x, y) { const desc = el.dataset.desc || ''; const name = el.dataset.name || ''; if (!desc && !name) return; tooltipName.textContent = name; tooltipDesc.textContent = desc; tooltip.classList.add('visible'); const tw = tooltip.offsetWidth || 240; const th = tooltip.offsetHeight || 60; const vw = window.innerWidth; const vh = window.innerHeight; let left = x + 14; let top = y + 14; if (left + tw > vw - 10) left = x - tw - 14; if (top + th > vh - 10) top = y - th - 14; tooltip.style.left = left + 'px'; tooltip.style.top = top + 'px'; } function hideTooltip() { tooltip.classList.remove('visible'); } document.addEventListener('mouseover', function (e) { const card = e.target.closest('.item-card[data-desc]'); if (card) showTooltip(card, e.clientX, e.clientY); }); document.addEventListener('mousemove', function (e) { const card = e.target.closest('.item-card[data-desc]'); if (card) showTooltip(card, e.clientX, e.clientY); else hideTooltip(); }); document.addEventListener('mouseout', function (e) { if (!e.target.closest('.item-card[data-desc]')) hideTooltip(); }); document.addEventListener('touchstart', function (e) { const card = e.target.closest('.item-card[data-desc]'); if (card) { const touch = e.touches[0]; showTooltip(card, touch.clientX, touch.clientY); clearTimeout(hideTimer); hideTimer = setTimeout(hideTooltip, 2500); } else { hideTooltip(); } }, { passive: true }); })();
     </script>
 </body>
 
