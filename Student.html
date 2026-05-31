@@ -1370,6 +1370,41 @@
             document.getElementById('main-panel').classList.remove('hidden');
         }
 
+        // Helper to preload images before showing portal
+        function preloadImages(urls) {
+            const uniqueUrls = [...new Set(urls.filter(Boolean))];
+            if (uniqueUrls.length === 0) return Promise.resolve();
+
+            return new Promise((resolve) => {
+                let loadedCount = 0;
+                const total = uniqueUrls.length;
+                let resolved = false;
+
+                const timer = setTimeout(() => {
+                    if (!resolved) {
+                        resolved = true;
+                        resolve();
+                    }
+                }, 5000); // 5 seconds max wait
+
+                function checkDone() {
+                    loadedCount++;
+                    if (loadedCount >= total && !resolved) {
+                        resolved = true;
+                        clearTimeout(timer);
+                        resolve();
+                    }
+                }
+
+                uniqueUrls.forEach(url => {
+                    const img = new Image();
+                    img.onload = checkDone;
+                    img.onerror = checkDone;
+                    img.src = url;
+                });
+            });
+        }
+
         // Fetch and load portal info (with optimistic cache)
         async function loadStudentPortal(showSpinner) {
             document.getElementById('login-panel').classList.add('hidden');
@@ -1389,14 +1424,32 @@
             try {
                 const response = await fetch(`${apiWebUrl}?action=getStudentProfile&studentId=${currentStudentId}&password=${currentPasswordHash}`);
                 const result = await response.json();
-                toggleLoading(false);
 
                 if (result.success === false) {
+                    toggleLoading(false);
                     localStorage.removeItem(cacheKey);
                     logout();
                     showModal("SESSION EXPIRED OR UNAUTHORIZED", "ERROR");
                     return;
                 }
+
+                // Gather all image URLs to preload
+                const imagesToLoad = [];
+                if (result.currentAvatarUrl) imagesToLoad.push(result.currentAvatarUrl);
+                if (result.banners) {
+                    result.banners.forEach(b => { if (b.imageUrl) imagesToLoad.push(b.imageUrl); });
+                }
+                if (result.inventory) {
+                    result.inventory.forEach(item => { if (item.imageUrl) imagesToLoad.push(item.imageUrl); });
+                }
+                if (result.avatars) {
+                    result.avatars.forEach(item => { if (item.imageUrl) imagesToLoad.push(item.imageUrl); });
+                }
+
+                // Preload all gathered images before hiding processing overlay
+                await preloadImages(imagesToLoad);
+
+                toggleLoading(false);
 
                 // Save to cache for next visit
                 cachedPortalData = result;
