@@ -344,6 +344,38 @@
             font-weight: bold;
         }
 
+        /* Custom Item Tooltip */
+        #item-tooltip {
+            position: fixed;
+            z-index: 99999;
+            background: #1a1a2e;
+            border: 1px solid rgba(0, 229, 255, 0.4);
+            border-radius: 6px;
+            padding: 8px 14px;
+            max-width: 240px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 13px;
+            color: #f0f0f0;
+            pointer-events: none;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.15), 0 4px 16px rgba(0,0,0,0.6);
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            transition: opacity 0.15s ease;
+            letter-spacing: 0.4px;
+            line-height: 1.5;
+        }
+        #item-tooltip.visible {
+            opacity: 1;
+        }
+        #item-tooltip .tooltip-name {
+            font-size: 12px;
+            color: #00E5FF;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
         /* Spinner */
         .spinner-overlay {
             position: fixed;
@@ -981,6 +1013,12 @@
         <p style="margin-top:20px; font-weight:bold; letter-spacing:2px;">PROCESSING...</p>
     </div>
 
+    <!-- Custom Item Description Tooltip -->
+    <div id="item-tooltip">
+        <div class="tooltip-name" id="tooltip-name"></div>
+        <div id="tooltip-desc"></div>
+    </div>
+
     <!-- GACHA ROLL SPINNER MODAL -->
     <div id="gacha-roll-overlay" class="spinner-overlay hidden">
         <!-- Spinning animation -->
@@ -997,14 +1035,17 @@
 
         <!-- Drop reveal -->
         <div id="gacha-reveal-box" class="gacha-item-reveal hidden" style="max-width: 720px; width: 90%;">
-            <h2 style="color: #00E5FF; font-size: 28px; text-shadow: 0 0 10px rgba(0, 229, 255, 0.4); margin-bottom: 15px;"><svg
-                    class="icon">
+            <h2
+                style="color: #00E5FF; font-size: 28px; text-shadow: 0 0 10px rgba(0, 229, 255, 0.4); margin-bottom: 15px;">
+                <svg class="icon">
                     <use href="#icon-star" />
                 </svg>
-                CONGRATULATIONS!</h2>
-            
+                CONGRATULATIONS!
+            </h2>
+
             <!-- Single roll reveal -->
-            <div id="single-reveal-content" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <div id="single-reveal-content"
+                style="display: flex; flex-direction: column; align-items: center; width: 100%;">
                 <div class="avatar-container" style="width: 140px; height: 140px; border-color: #00FF87;">
                     <img id="reveal-item-img" src="" alt="Dropped Item">
                 </div>
@@ -1013,10 +1054,12 @@
             </div>
 
             <!-- Multi roll (5x) reveal grid -->
-            <div id="multi-reveal-content" class="hidden" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 15px; width: 100%; margin-bottom: 15px; max-height: 380px; overflow-y: auto; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+            <div id="multi-reveal-content" class="hidden"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 15px; width: 100%; margin-bottom: 15px; max-height: 380px; overflow-y: auto; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
             </div>
 
-            <button onclick="closeGachaReveal()" class="primary-btn" style="margin-top: 15px; width: 100%;">AWESOME!</button>
+            <button onclick="closeGachaReveal()" class="primary-btn"
+                style="margin-top: 15px; width: 100%;">AWESOME!</button>
         </div>
     </div>
 
@@ -1347,8 +1390,10 @@
                 realGrid.innerHTML = `<p style="color:#888; text-align:center;">INVENTORY IS EMPTY.</p>`;
             } else {
                 result.inventory.forEach(item => {
+                    const descSafe = (item.description || 'NO DESCRIPTION AVAILABLE').replace(/`/g, "'");
+                    const nameSafe = item.name.replace(/`/g, "'");
                     realGrid.innerHTML += `
-                        <div class="item-card">
+                        <div class="item-card" data-desc="${descSafe}" data-name="${nameSafe}">
                             <span class="qty-badge">x${item.qty}</span>
                             <img src="${item.imageUrl || 'https://via.placeholder.com/70'}" alt="${item.name}">
                             <div style="font-size:13px; font-weight:bold; text-transform:uppercase;">${item.name}</div>
@@ -1746,18 +1791,18 @@
                     // Highlight the guaranteed avatar or highest value item in the rolling box
                     const guaranteedAvatarRoll = roll5Result.rolls.find(r => r.item.type === 'Avatar');
                     const displayItem = guaranteedAvatarRoll ? guaranteedAvatarRoll.item : roll5Result.rolls[0].item;
-                    
+
                     rollAvatarEl.src = displayItem.imageUrl || 'https://via.placeholder.com/150';
                     rollNameEl.innerText = displayItem.name + " (AND MORE!)";
                     rollAvatarEl.style.transform = 'scale(1.1)'; // Slight pop
 
                     revealTimeout = setTimeout(() => {
                         document.getElementById('gacha-roll-animation').classList.add('hidden');
-                        
+
                         // Render 5 items grid in reveal box
                         const multiContainer = document.getElementById('multi-reveal-content');
                         multiContainer.innerHTML = "";
-                        
+
                         roll5Result.rolls.forEach(r => {
                             const dupBadge = r.isDuplicate ? `<div style="font-size:10px; color:#ff3333; font-weight:bold; margin-top:4px;">DUP (+${r.refundedGems}💎)</div>` : '';
                             multiContainer.innerHTML += `
@@ -1846,6 +1891,68 @@
             localStorage.removeItem('student_pass_hash');
             showLogin();
         }
+
+        // Custom Item Tooltip (hover + touch)
+        (function() {
+            const tooltip = document.getElementById('item-tooltip');
+            const tooltipName = document.getElementById('tooltip-name');
+            const tooltipDesc = document.getElementById('tooltip-desc');
+            let hideTimer = null;
+
+            function showTooltip(el, x, y) {
+                const desc = el.dataset.desc || '';
+                const name = el.dataset.name || '';
+                if (!desc && !name) return;
+                tooltipName.textContent = name;
+                tooltipDesc.textContent = desc;
+
+                tooltip.classList.add('visible');
+
+                // Position near cursor/touch, keep within viewport
+                const tw = tooltip.offsetWidth || 240;
+                const th = tooltip.offsetHeight || 60;
+                const vw = window.innerWidth;
+                const vh = window.innerHeight;
+
+                let left = x + 14;
+                let top = y + 14;
+                if (left + tw > vw - 10) left = x - tw - 14;
+                if (top + th > vh - 10) top = y - th - 14;
+                tooltip.style.left = left + 'px';
+                tooltip.style.top = top + 'px';
+            }
+
+            function hideTooltip() {
+                tooltip.classList.remove('visible');
+            }
+
+            // Mouse events for desktop
+            document.addEventListener('mouseover', function(e) {
+                const card = e.target.closest('.item-card[data-desc]');
+                if (card) showTooltip(card, e.clientX, e.clientY);
+            });
+            document.addEventListener('mousemove', function(e) {
+                const card = e.target.closest('.item-card[data-desc]');
+                if (card) showTooltip(card, e.clientX, e.clientY);
+                else hideTooltip();
+            });
+            document.addEventListener('mouseout', function(e) {
+                if (!e.target.closest('.item-card[data-desc]')) hideTooltip();
+            });
+
+            // Touch events for mobile
+            document.addEventListener('touchstart', function(e) {
+                const card = e.target.closest('.item-card[data-desc]');
+                if (card) {
+                    const touch = e.touches[0];
+                    showTooltip(card, touch.clientX, touch.clientY);
+                    clearTimeout(hideTimer);
+                    hideTimer = setTimeout(hideTooltip, 2500);
+                } else {
+                    hideTooltip();
+                }
+            }, { passive: true });
+        })();
     </script>
 </body>
 
